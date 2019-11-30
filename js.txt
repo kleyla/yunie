@@ -1,0 +1,293 @@
+import React, {Component} from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  ImageBackground,
+  Image,
+  TextInput,
+  Dimensions,
+  TouchableOpacity,
+  Button,
+  Alert,
+} from 'react-native';
+// import bgImage from './assets/images/photo3.jpg';
+import bgImage from './assets/images/photo1.png';
+// import bgImage from './assets/images/Hoja-en-blanco.png';
+import Logo from './assets/images/lawyer.png';
+import Icon from 'react-native-vector-icons/AntDesign';
+
+import {Consumer} from '../Model/VarGlobales';
+import {theme} from './constants';
+// import {Container} from 'native-base';
+
+// import {Consumer} from '../../Model/VarGlobales';
+// import * as firebase from 'firebase/app';
+// import 'firebase/auth';
+import firebase from './components/Firebase';
+
+// var firebaseConfig = {
+//   apiKey: 'AIzaSyBZItrlRNfMmKIpV5Raf_rR4-ltN14tBQw',
+//   authDomain: 'lawyerdocs-764c9.firebaseapp.com',
+//   databaseURL: 'https://lawyerdocs-764c9.firebaseio.com',
+//   projectId: 'lawyerdocs-764c9',
+//   storageBucket: 'lawyerdocs-764c9.appspot.com',
+//   messagingSenderId: '948986959877',
+//   appId: '1:948986959877:web:88310c47b3db88022e646c',
+//   measurementId: 'G-G7Y1MDLYVY',
+// };
+// // Initialize Firebase
+// if (!firebase.apps.length) {
+//   firebase.initializeApp(firebaseConfig);
+// }
+// firebase.initializeApp(firebaseConfig);
+
+// import {HeaderGral} from './../components/Auxiliares';
+// import { TextInput } from 'react-native-gesture-handler';
+
+const {width: WIDTH} = Dimensions.get('window');
+
+export default class Login extends Component {
+  constructor() {
+    super();
+    this.state = {
+      email: '',
+      pass: '',
+    };
+  }
+
+  SingUp = (email, password) => {
+    try {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then(user => {
+          console.log(user);
+          Alert.alert('Bienvenid@!');
+          this.props.navigation.navigate('Home', {});
+        });
+    } catch (error) {
+      console.log(error.toString(error));
+    }
+  };
+
+  LogIn = (email, password) => {
+    try {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(res => {
+          Alert.alert('Bienvenid@!');
+          this.props.navigation.navigate('Home', {});
+          console.log(res.user.email);
+        })
+        .catch(error => {
+          console.error(error);
+          console.log('ERROR');
+          Alert.alert(
+            'Error con el email o contrasenha!',
+            'Por favor verifique su email o contrasenha',
+          );
+        });
+    } catch (error) {
+      console.log(email);
+      console.log(password);
+      // console.log(error.toString(error));
+    }
+  };
+
+  handlePress = async () => {
+    console.log('press');
+    // fetch('http://10.42.0.1:8000/api/login', {
+    fetch('http://192.168.0.15:8000/api/login', {
+      method: 'post',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      // body: "email=this.state.email&&password=this.state.pass"
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.pass,
+      }),
+    })
+      .then(response => response.json())
+      .then(responseJson => {
+        if (responseJson.length === 0) {
+          Alert.alert('USUARIO INGRESADO INCORRECTO');
+        } else {
+          Alert.alert('Bienvenido ' + responseJson.name);
+          //this.context.state.GuardarInformacion(responseJson);
+          // e2.state.GuardarInformacion(responseJson);
+          //this.props.navigation.navigate('Bienvenida', {});
+          // e.navigate('Home', {});
+          this.props.navigation.navigate('Home', {});
+        }
+        console.log(responseJson);
+      })
+      .catch(error => {
+        console.log(error);
+        console.log('Error');
+        Alert.alert('ERROR: PROBLEMA DE CONECTIVIDAD...!!!');
+      });
+  };
+
+  componentDidMount(){
+    console.log(this.context.state)
+  }
+
+  render() {
+    return (
+      <Consumer>
+        {value => (
+          <ImageBackground source={bgImage} style={styles.backgroundContainer}>
+            {/* <Container> */}
+            <View style={styles.logoContainer}>
+              <Image source={Logo} style={styles.logo} />
+              <Text style={styles.logoText}>LawyerDocs</Text>
+            </View>
+            <View style={styles.inputContainer}>
+              <TextInput
+                onChangeText={e => {
+                  this.setState({email: e});
+                }}
+                style={styles.input}
+                placeholder={'Email'}
+                placeholderTextColor={theme.colors.black}
+                underLineColorAndroid="transparent"
+              />
+              <Icon
+                style={styles.inputIcon}
+                name={'mail'}
+                size={22}
+                color={theme.colors.black}
+              />
+            </View>
+            <View style={styles.inputContainer}>
+              <TextInput
+                onChangeText={e => {
+                  this.setState({pass: e});
+                }}
+                style={styles.input}
+                placeholder={'Password'}
+                secureTextEntry={true}
+                placeholderTextColor={theme.colors.black}
+                underLineColorAndroid="transparent"
+              />
+              <Icon
+                style={styles.inputIcon}
+                name={'lock'}
+                size={22}
+                color={theme.colors.black}
+              />
+              <TouchableOpacity style={styles.btnEye}>
+                <Icon name={'eye'} size={26} color={theme.colors.black} />
+              </TouchableOpacity>
+            </View>
+            <TouchableOpacity
+              style={styles.btnLogin}
+              onPress={
+                () => this.LogIn(this.state.email, this.state.pass)
+                // this.handlePress.bind(this)
+                // console.log('El Usuario es:' + this.state.email),
+                // console.log(' La contrasenaes: ' + this.state.pass),
+                // this.props.navigation.navigate('Home', {});
+                // value.state.checkUser(
+                //   this.props.navigation,
+                //   value,
+                //   this.state.email,
+                //   this.state.pass,
+                // );
+              }>
+              <Text style={styles.text}>Inicia Sesión</Text>
+            </TouchableOpacity>
+            <Text>Ejemplos</Text>
+            <TouchableOpacity
+              style={styles.btnLogin}
+              onPress={() => {
+                this.props.navigation.navigate('Scan');
+              }}>
+              <Text style={styles.text}>Scan</Text>
+            </TouchableOpacity>
+            {/* </Container> */}
+          </ImageBackground>
+        )}
+      </Consumer>
+    );
+  }
+}
+
+Login.contextType = Consumer;
+
+const styles = StyleSheet.create({
+  backgroundContainer: {
+    flex: 1,
+    width: null,
+    height: null,
+    justifyContent: 'center',
+    alignContent: 'center',
+    alignItems: 'center',
+  },
+  logoContainer: {
+    alignItems: 'center',
+    marginBottom: 30,
+  },
+  logo: {
+    width: 120,
+    height: 120,
+  },
+  logoText: {
+    color: theme.colors.black2,
+    fontWeight: 'bold',
+    fontSize: 30,
+    // fontWeight: '500',
+    marginTop: 10,
+    // opacity: 0.5,
+  },
+  input: {
+    width: WIDTH - 55,
+    height: 45,
+    borderRadius: 25,
+    fontSize: 16,
+    paddingLeft: 50,
+    backgroundColor: theme.colors.white,
+    // color: theme.colors.black,
+    color: 'rgba(0, 0, 0, 35)',
+    marginHorizontal: 25,
+  },
+  inputIcon: {
+    position: 'absolute',
+    opacity: 0.5,
+    // padding: 10,
+    top: 10,
+    left: 40,
+  },
+  inputContainer: {
+    marginTop: 5,
+  },
+  btnEye: {
+    position: 'absolute',
+    top: 8,
+    right: 37,
+  },
+  btnLogin: {
+    width: WIDTH - 55,
+    height: 45,
+    borderRadius: 25,
+    backgroundColor: theme.colors.primary,
+    justifyContent: 'center',
+    marginTop: 20,
+  },
+  text: {
+    color: 'white',
+    fontSize: 16,
+    textAlign: 'center',
+  },
+  textReg: {
+    marginTop: 20,
+    color: 'rgba(0, 0, 0, 37)',
+    fontSize: 16,
+    textAlign: 'center',
+  },
+});
+
