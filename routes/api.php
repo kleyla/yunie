@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('login','UserController@loginApi');
 Route::get('publicaciones', 'ProductoController@publicacionesApi');
 Route::get('usuarios', 'UserController@usuariosApi');
+Route::get('publicacion/{id}/comentarios', 'PublicacionController@publicacionApi');
 
 
 Route::get('/file/images/{fileName}', 'ProductoController@images');

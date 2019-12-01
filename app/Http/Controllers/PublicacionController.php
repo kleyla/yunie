@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Publicacion;
+use App\Comentario;
+use App\Producto;
 use Illuminate\Http\Request;
 use DB;
 
@@ -74,7 +76,7 @@ class PublicacionController extends Controller
                     comentar_pubs.id_publicacion = $publicacion->id");
             // dd($comentarios_pub);
             $producto = DB::table('productos')->where('id', $publicacion->id_producto)->first();
-            return \view('admin.publicaciones.verPublicacion', compact('publicacion', 'producto', 'megustas', 'compartirs', 'comentarios','comentarios_pub'));
+            return \view('admin.publicaciones.verPublicacion', compact('publicacion', 'producto', 'megustas', 'compartirs', 'comentarios', 'comentarios_pub'));
         }
     }
 
@@ -130,5 +132,20 @@ class PublicacionController extends Controller
             $request->session()->flash('alert-danger', 'Publicacion elimninada con exito!');
             return \redirect()->route('publicaciones');
         }
+    }
+
+    // API
+    public function publicacionApi($idp)
+    {
+        $publicacion = DB::select("select publicacions.id, publicacions.descripcion, productos.id as idp
+            from publicacions, productos
+            where publicacions.id_producto = productos.id and
+                publicacions.id = $idp");
+        foreach ($publicacion as $publi) {
+            $publi->comentarios = Publicacion::getComentarios($publi->id);
+            $publi->imagenes = Producto::getImagenes($publi->idp);
+
+        }
+        return response()->json($publicacion, 200);
     }
 }
