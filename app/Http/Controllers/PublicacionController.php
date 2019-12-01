@@ -137,15 +137,13 @@ class PublicacionController extends Controller
     // API
     public function publicacionApi($idp)
     {
-        $publicacion = DB::select("select publicacions.id, publicacions.descripcion, productos.id as idp
-            from publicacions, productos
-            where publicacions.id_producto = productos.id and
-                publicacions.id = $idp");
-        foreach ($publicacion as $publi) {
-            $publi->comentarios = Publicacion::getComentarios($publi->id);
-            $publi->imagenes = Producto::getImagenes($publi->idp);
+        $publicacion = Publicacion::find($idp);
+        // dd($publicacion);
+        // foreach ($publicacion as $publi) {
+            $publicacion->comentarios = Publicacion::getComentarios($publicacion->id);
+            $publicacion->imagenes = Producto::getImagenes($publicacion->id_producto);
 
-        }
+        // }
         return response()->json($publicacion, 200);
     }
 }

@@ -80,6 +80,7 @@ class VendedorController extends Controller
     public function edit($idv)
     {
         $vendedor = Vendedor::find($idv);
+        // dd($vendedor)
         if ($vendedor != null) {
             $usuario = User::find($vendedor->id_user);
             return \view('admin.vendedores.editVendedor', compact('vendedor', 'usuario'));
@@ -144,7 +145,7 @@ class VendedorController extends Controller
         $tiendas = DB::table('tiendas')->where('id_vendedor', $vendedor->id)->get();
         return \view('vendedor.misTiendas', \compact('vendedor', 'usuario', 'tiendas'));
         }
-        
+
     }
     public function misProductos()
     {

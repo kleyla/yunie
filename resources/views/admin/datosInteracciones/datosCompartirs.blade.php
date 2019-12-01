@@ -94,7 +94,7 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Cantidad de monedas</label>
                         <input type="number" class="form-control" id="cant_monedas" name="cant_monedas" aria-describedby="emailHelp"
-                            placeholder="cantidad de monedas">
+                            placeholder="cantidad de monedas" required>
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -21,8 +21,10 @@ Route::post('login','UserController@loginApi');
 Route::get('publicaciones', 'ProductoController@publicacionesApi');
 Route::get('usuarios', 'UserController@usuariosApi');
 Route::get('publicacion/{id}/comentarios', 'PublicacionController@publicacionApi');
+Route::post('register','UserController@registerApi');
 
 
+// IMAGENES
 Route::get('/file/images/{fileName}', 'ProductoController@images');
 Route::get('/archivo/images/{fileName}', 'ProductoController@images');
 Route::get('/file/imageUser/{fileName}', 'UserController@imageUser');

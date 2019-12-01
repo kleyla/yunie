@@ -88,19 +88,19 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Nombre</label>
                         <input type="text" class="form-control" id="nombre" name="nombre" aria-describedby=""
-                            placeholder="Nombre">
+                            placeholder="Nombre" required>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Desccripcion</label>
                         <input type="text" class="form-control" id="descripcion" name="descripcion" aria-describedby=""
-                            placeholder="Descripcion">
+                            placeholder="Descripcion" required>
                     </div>
                     <div class="col-md-12">
                         <fieldset>
                             <label class="form-control-label" for="input-first-name">Seleccionar foto</label>
                             <br>
                             <section class="">
-                                <input type="file" name="foto" id="foto">
+                                <input type="file" name="foto" id="foto" required>
                             </section>
                         </fieldset>
                     </div>

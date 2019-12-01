@@ -126,11 +126,15 @@ Route::get('/misComentarios', 'VendedorController@misComentarios')->name('misCom
 // REPORTES
 Route::get('/reportes', 'ReporteController@reportes')->name('reportes');
 
-Route::get('/downUsers', 'ReporteController@downUsers')->name('downUsers');
-Route::get('/downVendedores', 'ReporteController@downVendedores')->name('downVendedores');
-Route::get('/downClientes', 'ReporteController@downClientes')->name('downClientes');
-Route::get('/downTiendas', 'ReporteController@downTiendas')->name('downTiendas');
+// Route::get('/downUsers', 'ReporteController@downUsers')->name('downUsers');
+Route::post('/downUsers', 'ReporteController@downUsers')->name('downUsers');
+
+Route::post('/downVendedores', 'ReporteController@downVendedores')->name('downVendedores');
+Route::post('/downClientes', 'ReporteController@downClientes')->name('downClientes');
+Route::post('/downTiendas', 'ReporteController@downTiendas')->name('downTiendas');
+Route::post('/downMegustas', 'ReporteController@downMegustas')->name('downMegustas');
+Route::post('/downProductos', 'ReporteController@downProductos')->name('downProductos');
 
 // AI
 Route::get('/imagenAi', 'ProductoController@imagenAi')->name('imagenAi');
-
+Route::post('/buscar', 'ProductoController@buscar')->name('buscar');

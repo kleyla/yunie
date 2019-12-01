@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Exports\UsersExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\User;
+use App\Vendedor;
 use DB;
 
 class UserController extends Controller
@@ -91,10 +92,10 @@ class UserController extends Controller
         return \view('admin.dash');
     }
 
-    public function downUsers()
-    {
-        return Excel::download(new UsersExport, 'users.xlsx');
-    }
+    // public function downUsers()
+    // {
+    //     return Excel::download(new UsersExport, 'users.xlsx');
+    // }
 
     // APIS
     public function loginApi(Request $request)
@@ -118,5 +119,25 @@ class UserController extends Controller
     public function imageUser($fileName)
     {
         return \response()->download(public_path("/img/users/$fileName"));
+    }
+    public function registerApi(Request $request)
+    {
+        if ($request->nombres == null || $request->email == null || $request->password = null) {
+            return response()->json();
+        } else {
+            $usuario = new User();
+            // $usuario->id_firebase = $request=
+            $usuario->name = $request->nombres.' '.$request->apellidos;
+            $usuario->email = $request->email;
+            $usuario->password = bcrypt($request->password);
+            $usuario->id_permiso = 3;
+            $usuario->save();
+            $vendedor = new Vendedor();
+            $vendedor->nombres = $request->nombres;
+            $vendedor->apellidos = $request->apellidos;
+            $vendedor->id_user =$usuario->id;
+            $vendedor->save();
+            return response()->json($usuario, 200);
+        }
     }
 }

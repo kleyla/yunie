@@ -93,18 +93,18 @@
                         <div class="col-md-6 pr-md-1">
                             {{-- <label for="exampleInputEmail1">Nombres</label> --}}
                             <input type="text" class="form-control" id="nombre" name="nombre" aria-describedby=""
-                                placeholder="Nombre">
+                                placeholder="Nombre" required>
                         </div>
                         <div class="col-md-6 pr-md-1">
                             {{-- <label for="exampleInputEmail1">Apellidos</label> --}}
                             <input type="text" class="form-control" id="descripcion" name="descripcion"
-                                aria-describedby="" placeholder="Descripcion">
+                                aria-describedby="" placeholder="Descripcion" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 pr-md-1">
                             <input type="number" class="form-control" id="telefono" name="telefono" aria-describedby=""
-                                placeholder="Telefono">
+                                placeholder="Telefono" required>
                         </div>
                         <div class="col-md-6 pr-md-1">
                             {{-- <label for="exampleInputEmail1"></label> --}}
@@ -115,7 +115,7 @@
                     <div class="row">
                         <div class="col-md-12 pr-md-1">
                             <input type="text" class="form-control" id="direccion" name="direccion" aria-describedby=""
-                                placeholder="Direccion">
+                                placeholder="Direccion" required>
                         </div>
                         {{-- <div class="col-md-6 pr-md-1">
                                 <input type="text" class="form-control" id="nit" name="nit" aria-describedby=""
@@ -136,13 +136,13 @@
                             <label class="form-control-label" for="input-first-name">Seleccionar foto</label>
                             <br>
                             <section class="">
-                                <input type="file" name="foto" id="foto">
+                                <input type="file" name="foto" id="foto" required>
                             </section>
                         </fieldset>
                     </div>
                     <div id="map"></div>
                     <input type="text" name="latitud" id="latitud" class="form-control" required >
-                    <input type="text" name="longitud" id="longitud" class="form-control" required
+                    <input type="text" name="longitud" id="longitud" class="form-control" required>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

@@ -100,7 +100,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Descripcion</label>
-                                <input type="text" class="form-control" name="descripcion" id="descripcion">
+                                <input type="text" class="form-control" name="descripcion" id="descripcion" required>
                             </div>
                         </div>
                     </div>
@@ -109,13 +109,13 @@
                             <div class="form-group">
                                 <label class="bmd-label-floating">Precio oferta</label>
                                 <input type="number" step="0.01" class="form-control" id="precio_oferta"
-                                    name="precio_oferta">
+                                    name="precio_oferta" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Cantidad de monedas</label>
-                                <input type="number" class="form-control" id="cant_monedas" name="cant_monedas">
+                                <input type="number" class="form-control" id="cant_monedas" name="cant_monedas" required>
                             </div>
                         </div>
                     </div>
@@ -124,13 +124,13 @@
                             <label class="bmd-label-floating">Fecha inicio</label>
                             <div class="form-group">
                                 <input type="date" class="form-control" id="fecha_ini" name="fecha_ini"
-                                    placeholder="Fecha">
+                                    placeholder="Fecha" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <label class="bmd-label-floating">Fecna fin</label>
                             <div class="form-group">
-                                <input type="date" class="form-control" id="fecha_fin" name="fecha_fin">
+                                <input type="date" class="form-control" id="fecha_fin" name="fecha_fin" required>
                             </div>
                         </div>
                     </div>

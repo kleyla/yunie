@@ -21,6 +21,11 @@ class ProductoController extends Controller
     {
         $categorias = DB::table('categorias')->where('estado', true)->get();
         $productos = DB::table('productos')->where('estado', true)->get();
+        $precio = DB::table('productos')->select('precio')->where('id', 1)->first();
+        // dd($precio);
+        // $total = 10.05;
+        // $total = $total+$precio->precio;
+        // dd($total);
         return \view('admin.productos.productos', compact('categorias', 'productos'));
     }
 
@@ -136,9 +141,9 @@ class ProductoController extends Controller
             $promedio=0;
             return \view('admin.productos.verProducto', \compact('producto', 'tags', 'imagenes', 'imagenMain', 'categoria', 'tienda', 'valoraciones', 'promedio'));
         }
-        // 
+        //
         // dd($promedio);
-        // 
+        //
     }
 
     /**
@@ -230,6 +235,25 @@ class ProductoController extends Controller
             array_push($tags, $name->name);
         }
         dd($tags);
+    }
+
+    public function buscar(Request $request)
+    {
+        $buscar = $request->tag;
+        // dd($buscar);
+        $productos = Producto::where('estado', true)->get();
+        $productosTag = array();
+        foreach( $productos as $producto){
+            $tags = Tag::where('id_producto', $producto->id)->get();
+            foreach( $tags as $tag ){
+                if ( strcmp($tag->nombre, $buscar)== 0){
+                    array_push($productosTag, $producto);
+                    // dd($productosTag);
+                }
+            }
+        }
+        // dd($productosTag);
+        return \view('admin.busqueda', \compact('productosTag'));
     }
 
     // APIS

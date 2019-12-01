@@ -27,14 +27,14 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Nombre</label>
-                                        <input type="text" class="form-control" name="nombre" id="nombre" value="">
+                                        <input type="text" class="form-control" name="nombre" id="nombre" value="" required>
                                     </div>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Descripcion</label>
                                         <input type="text" class="form-control" name="descripcion" id="descripcion"
-                                            value="">
+                                            value="" required>
                                     </div>
                                 </div>
                             </div>
@@ -42,13 +42,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Precio</label>
-                                        <input type="number" class="form-control" id="precio" name="precio">
+                                        <input type="number" class="form-control" id="precio" name="precio" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Stock</label>
-                                        <input type="number" class="form-control" id="stock" name="stock">
+                                        <input type="number" class="form-control" id="stock" name="stock" required>
                                     </div>
                                 </div>
                             </div>
@@ -96,7 +96,7 @@
                                         <label class="form-control-label" for="input-first-name">Seleccionar foto de
                                             perfil</label> <br>
                                         <section class="">
-                                            <input type="file" name="foto[]" id="foto" multiple="">
+                                            <input type="file" name="foto[]" id="foto" multiple="" required>
                                             <br>
                                             <img id="imgSalida" width="50%" height="50%" src="" alt="">
                                         </section>

@@ -13,6 +13,10 @@ class Producto extends Model
 {
     protected $table = 'productos';
 
+    public function getProduto()
+    {
+        # code...
+    }
     public static function getImagenes($idp)
     {
         $imagenes = Imagen::where('id_producto', $idp)->get();
