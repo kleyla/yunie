@@ -122,3 +122,11 @@ Route::get('/misInteracciones', 'VendedorController@misInteracciones')->name('mi
 Route::get('/misMegustas', 'VendedorController@misMegustas')->name('misMegustas');
 Route::get('/misCompartirs', 'VendedorController@misCompartirs')->name('misCompartirs');
 Route::get('/misComentarios', 'VendedorController@misComentarios')->name('misComentarios');
+
+// REPORTES
+Route::get('/reportes', 'ReporteController@reportes')->name('reportes');
+
+Route::get('/downUsers', 'ReporteController@downUsers')->name('downUsers');
+Route::get('/downVendedores', 'ReporteController@downVendedores')->name('downVendedores');
+Route::get('/downClientes', 'ReporteController@downClientes')->name('downClientes');
+Route::get('/downTiendas', 'ReporteController@downTiendas')->name('downTiendas');
