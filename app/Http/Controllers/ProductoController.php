@@ -7,6 +7,8 @@ use App\Imagen;
 use App\Tag;
 use Illuminate\Http\Request;
 use DB;
+use PhpFanatic\clarifAI\ImageClient;
+
 
 class ProductoController extends Controller
 {
@@ -42,6 +44,7 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
+
         $producto = new Producto();
         // dd($request->tags);
         $producto->nombre = $request->nombre;
@@ -49,10 +52,33 @@ class ProductoController extends Controller
         $producto->precio = $request->precio;
         $producto->stock = $request->stock;
         $producto->id_categoria = $request->categoria;
+        $producto->save();
         if ($request->hasFile('foto')) {
             foreach ($request->file('foto') as $image) {
+                // dd($image);
+                $client = new ImageClient('23cfeedf53b3466486817f265e3ac790');
+                $client->SetLanguage('es');
+                $imagen = file_get_contents($image);
+                $client->AddImage($imagen);
+                $result = json_decode($client->Predict());
+                // dd($result);
+                $names = $result->outputs[0]->data->concepts;
+                $tags = array();
+                foreach ($names as $name) {
+                    array_push($tags, $name->name);
+                }
+                // dd($tags);
+                $i = 0;
+                while ($i < sizeof($tags)) {
+                    $newTag = new Tag();
+                    // dd($tags[$i]);
+                    $newTag->nombre = $tags[$i];
+                    $newTag->id_producto = $producto->id;
+                    $newTag->save();
+                    $i = $i + 1;
+                }
                 $destinationPath = 'img/productos/';
-                $filemane = $image->getClientOriginalName();
+                $filemane = uniqid(). $image->getClientOriginalName();
                 $image->move($destinationPath, $filemane);
                 $imagenProd = new Imagen();
                 $imagenProd->imagen = $filemane;
@@ -61,17 +87,20 @@ class ProductoController extends Controller
             }
         }
         $mainFoto = DB::table('imagens')->where('id_producto', $producto->id)->first();
-        $producto->mainFoto = $mainFoto;
+        // dd($mainFoto);
+        $producto = Producto::find($producto->id);
+        $producto->mainFoto = $mainFoto->imagen;
         $producto->save();
-        $tags = $request->tags;
-        $array = explode(",", $tags);
+        // dd($producto);
+        // $tagss = $request->tags;
+        // $array = explode(",", $tagss);
         // dd($array);
-        foreach ($array as $tag1) {
-            $newTag = new Tag();
-            $newTag->nombre = $tag1;
-            $newTag->id_producto = $producto->id;
-            $newTag->save();
-        }
+        // foreach ($array as $tag1) {
+        //     $newTag = new Tag();
+        //     $newTag->nombre = $tag1;
+        //     $newTag->id_producto = $producto->id;
+        //     $newTag->save();
+        // }
         $request->session()->flash('alert-success', 'Producto guardado con exito!');
         return \redirect()->route('productos');
     }
@@ -175,6 +204,26 @@ class ProductoController extends Controller
             $producto->save();
             return \redirect()->route('productos');
         }
+    }
+
+    public function imagenAi()
+    {
+        $client = new ImageClient('23cfeedf53b3466486817f265e3ac790');
+        // $client->AddImage('https://source.unsplash.com/umchkHwkdyM');
+        $base64 = file_get_contents(public_path("/img/productos/aros01.jpeg"));
+
+        $client->AddImage($base64);
+        $client->SetLanguage('es');
+        $result = json_decode($client->Predict());
+        // dd($result);
+        // dd($result->outputs[0]->data->concepts[0]->name);
+        $names = $result->outputs[0]->data->concepts;
+        $tags = array();
+
+        foreach ($names as $name) {
+            array_push($tags, $name->name);
+        }
+        dd($tags);
     }
 
     // APIS

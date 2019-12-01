@@ -130,3 +130,7 @@ Route::get('/downUsers', 'ReporteController@downUsers')->name('downUsers');
 Route::get('/downVendedores', 'ReporteController@downVendedores')->name('downVendedores');
 Route::get('/downClientes', 'ReporteController@downClientes')->name('downClientes');
 Route::get('/downTiendas', 'ReporteController@downTiendas')->name('downTiendas');
+
+// AI
+Route::get('/imagenAi', 'ProductoController@imagenAi')->name('imagenAi');
+
