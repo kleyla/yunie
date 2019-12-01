@@ -83,7 +83,7 @@ class ProductoController extends Controller
                     $i = $i + 1;
                 }
                 $destinationPath = 'img/productos/';
-                $filemane = uniqid(). $image->getClientOriginalName();
+                $filemane = uniqid() . $image->getClientOriginalName();
                 $image->move($destinationPath, $filemane);
                 $imagenProd = new Imagen();
                 $imagenProd->imagen = $filemane;
@@ -137,8 +137,8 @@ class ProductoController extends Controller
         if ($valoraciones != null) {
             $promedio = DB::table('valoracions')->where('estado', true)->avg('puntuaciones');
             return \view('admin.productos.verProducto', \compact('producto', 'tags', 'imagenes', 'imagenMain', 'categoria', 'tienda', 'valoraciones', 'promedio'));
-        }else{
-            $promedio=0;
+        } else {
+            $promedio = 0;
             return \view('admin.productos.verProducto', \compact('producto', 'tags', 'imagenes', 'imagenMain', 'categoria', 'tienda', 'valoraciones', 'promedio'));
         }
         //
@@ -243,10 +243,10 @@ class ProductoController extends Controller
         // dd($buscar);
         $productos = Producto::where('estado', true)->get();
         $productosTag = array();
-        foreach( $productos as $producto){
+        foreach ($productos as $producto) {
             $tags = Tag::where('id_producto', $producto->id)->get();
-            foreach( $tags as $tag ){
-                if ( strcmp($tag->nombre, $buscar)== 0){
+            foreach ($tags as $tag) {
+                if (strcmp($tag->nombre, $buscar) == 0) {
                     array_push($productosTag, $producto);
                     // dd($productosTag);
                 }
@@ -259,12 +259,15 @@ class ProductoController extends Controller
     // APIS
     public function publicacionesApi()
     {
-        $productos = DB::select("select productos.*, tiendas.id as idt, tiendas.nombre as tienda, tiendas.foto,
+        $productos = DB::select("select productos.*, tiendas.id as idt, tiendas.nombre as tienda, tiendas.foto, publicacions.created_at,
                 publicacions.id as idp, publicacions.descripcion as descPub, publicacions.precio_oferta, publicacions.cant_monedas
             from productos, tiendas, publicacions
             where productos.id_tienda = tiendas.id and
                 publicacions.id_producto = productos.id and
-                productos.estado = true");
+                productos.estado = true and
+                publicacions.estado = true
+                order by publicacions.created_at DESC");
+        // dd($productos);
         foreach ($productos as $producto) {
             $producto->imagenes = Producto::getImagenes($producto->id);
             $producto->megustas = Producto::getMegustas($producto->idp);

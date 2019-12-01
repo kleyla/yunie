@@ -100,6 +100,8 @@
     {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATxiHfEHVZwbPtp2gdyc8K15B_4LqNwIA"></script> --}}
     <!-- Chartist JS -->
     <script src="{{ asset('js/plugins/chartist.min.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
     <!--  Notifications Plugin    -->
     <script src="{{ asset('js/plugins/bootstrap-notify.js')}}"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->

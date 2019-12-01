@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use PhpFanatic\clarifAI\ImageClient;
+
 use App\Publicacion;
 use App\Comentario;
 use App\Producto;
 use Illuminate\Http\Request;
+use App\ComentarPub;
+use App\User;
+use App\Cliente;
+use App\Tag;
 use DB;
 
 class PublicacionController extends Controller
@@ -140,10 +146,118 @@ class PublicacionController extends Controller
         $publicacion = Publicacion::find($idp);
         // dd($publicacion);
         // foreach ($publicacion as $publi) {
-            $publicacion->comentarios = Publicacion::getComentarios($publicacion->id);
-            $publicacion->imagenes = Producto::getImagenes($publicacion->id_producto);
+        $publicacion->comentarios = Publicacion::getComentarios($publicacion->id);
+        $publicacion->imagenes = Producto::getImagenes($publicacion->id_producto);
 
         // }
         return response()->json($publicacion, 200);
+    }
+    public function publicacionComentarioAddApi(Request $request, $idp)
+    {
+        if ($request->descripcion == null) {
+            return \response()->json("Descr");
+        } else {
+            $publicacion = Publicacion::find($idp);
+            $user = User::where('id_firebase', $request->id_cliente)->first();
+            $datoComentario = Comentario::orderBy('created_at', 'DESC')->first();
+            if ($publicacion != null && $user != null) {
+                $cliente = Cliente::where('id_user', $user->id)->first();
+                if ($cliente != null) {
+                    $comentario = new ComentarPub();
+                    $comentario->descripcion = $request->descripcion;
+                    $comentario->id_publicacion = $request->id_publicacion;
+                    $comentario->id_cliente = $cliente->id;
+                    $comentario->id_comentario = $datoComentario->id;
+                    $comentario->save();
+                    return \response()->json($comentario, 200);
+                } else {
+                    return \response()->json("Cliente");
+                }
+            } else {
+                return \response()->json("Publi");
+            }
+        }
+    }
+
+    public function buscarApi(Request $request)
+    {
+        $client = new ImageClient('23cfeedf53b3466486817f265e3ac790');
+        $client->SetLanguage('es');
+        $imagen = file_get_contents($request->photo);
+        $client->AddImage($imagen);
+        $result = json_decode($client->Predict());
+        // dd($result);
+        // return $result;
+        $names = $result->outputs[0]->data->concepts;
+        $tags = array();
+        foreach ($names as $name) {
+            array_push($tags, $name->name);
+        }
+        // return $tags;
+        $productosTag = array();
+        // $productos = Producto::where('estado', true)->get();
+        // foreach ($productos as $producto) {
+        //     $tagsProducto = Tag::where('id_producto', $producto->id)->get();
+        //     foreach ($tagsProducto as $tagPro) {
+        //         foreach ($tags as $tag) {
+        //             if (strcmp($tagPro->nombre, $tag) == 0) {
+        //                 array_push($productosTag, $producto);
+        //                 // dd($productosTag);
+
+        //             }
+        //         }
+        //     }
+        // }
+        $tagsPro = Tag::all();
+        foreach ($tagsPro as $tagPro) {
+            foreach ($tags as $tag) {
+                // return $tagPro->nombre;
+                if (strcmp($tag, $tagPro->nombre) == 0) {
+                    // return $tagPro->id_producto;
+                    array_push($productosTag, $tagPro->id_producto);
+                }
+            }
+        }
+        // return $productosTag;
+        $idProductos = array_unique($productosTag);
+        // dd($idProductos);
+        // return $idProductos;
+        // $productos = new stdClass();
+        $productos = array();
+        foreach ($idProductos as $idp) {
+            $prod = Producto::find($idp);
+            if ($prod != null) {
+                array_push($productos, $prod);
+            }
+        }
+        // dd($productos);
+        // return \response()->json($productos, 200);
+        return $productos;
+    }
+    public function example()
+    {
+        $array = [1, 1, 2, 3, 3, 3];
+        $tags = ['manilla', 'brazalete', 'mujer', 'aros', 'pendiente', 'correa', 'cinturon'];
+        $tagsPro = Tag::all();
+        $productosTag = array();
+
+        foreach ($tagsPro as $tagPro) {
+            foreach ($tags as $tag) {
+                if (strcmp($tag, $tagPro->nombre) == 0) {
+                    array_push($productosTag, $tagPro->id_producto);
+                }
+            }
+        }
+        // dd($productosTag);
+        $idProductos = array_unique($productosTag);
+        // dd($idProductos);
+        $productos = array();
+        foreach ($idProductos as $idp) {
+            $prod = Producto::find($idp);
+
+            array_push($productos, $prod);
+        }
+        // dd($productos);
+        return $productos;
     }
 }

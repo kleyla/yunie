@@ -22,6 +22,9 @@ Route::get('publicaciones', 'ProductoController@publicacionesApi');
 Route::get('usuarios', 'UserController@usuariosApi');
 Route::get('publicacion/{id}/comentarios', 'PublicacionController@publicacionApi');
 Route::post('register','UserController@registerApi');
+Route::post('publicacion/{idp}/comentario/add','PublicacionController@publicacionComentarioAddApi');
+Route::post('buscar','PublicacionController@buscarApi');
+Route::get('example','PublicacionController@example');
 
 
 // IMAGENES

@@ -8,6 +8,7 @@ use App\Exports\UsersExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\User;
 use App\Vendedor;
+use App\Cliente;
 use DB;
 
 class UserController extends Controller
@@ -122,17 +123,17 @@ class UserController extends Controller
     }
     public function registerApi(Request $request)
     {
-        if ($request->nombres == null || $request->email == null || $request->password = null) {
+        if ($request->nombres == null || $request->email == null || $request->password = null || $request->id_firebase==null) {
             return response()->json();
         } else {
             $usuario = new User();
-            // $usuario->id_firebase = $request=
+            $usuario->id_firebase = $request->id_firebase;
             $usuario->name = $request->nombres.' '.$request->apellidos;
             $usuario->email = $request->email;
             $usuario->password = bcrypt($request->password);
             $usuario->id_permiso = 3;
             $usuario->save();
-            $vendedor = new Vendedor();
+            $vendedor = new Cliente();
             $vendedor->nombres = $request->nombres;
             $vendedor->apellidos = $request->apellidos;
             $vendedor->id_user =$usuario->id;
