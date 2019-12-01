@@ -75,5 +75,61 @@ class UsersTableSeeder extends Seeder
             'foto' => 'liz.png',
             'created_at' => now(),
         ]);
+        DB::table('users')->insert([
+            'name' => 'german',
+            'email' => 'german@live.com',
+            'password' => bcrypt('123123'),
+            'id_permiso' => '1',
+            'foto' => 'hombre1.jpg',
+            'created_at' => now(),
+        ]);
+        DB::table('users')->insert([
+            'name' => 'brandon',
+            'email' => 'brandon@outlook.com',
+            'password' => bcrypt('123123'),
+            'id_permiso' => '2',
+            'foto' => 'hombre2.jpg',
+            'created_at' => now(),
+        ]);
+        DB::table('users')->insert([
+            'name' => 'adolfo',
+            'email' => 'adolfo@gmail.com',
+            'password' => bcrypt('123123'),
+            'id_permiso' => '3',
+            'foto' => 'hombre3.jpg',
+            'created_at' => now(),
+        ]);
+        DB::table('users')->insert([
+            'name' => 'cecilia',
+            'email' => 'cecilia@live.com',
+            'password' => bcrypt('123123'),
+            'id_permiso' => '1',
+            'foto' => 'mujer1.jpg',
+            'created_at' => now(),
+        ]);
+        DB::table('users')->insert([
+            'name' => 'teresa',
+            'email' => 'teresa@hotmail.com',
+            'password' => bcrypt('123123'),
+            'id_permiso' => '2',
+            'foto' => 'mujer2.jpg',
+            'created_at' => now(),
+        ]);
+        DB::table('users')->insert([
+            'name' => 'martha',
+            'email' => 'martha13@hotmail.com',
+            'password' => bcrypt('123123'),
+            'id_permiso' => '3',
+            'foto' => 'mujer3.jpg',
+            'created_at' => now(),
+        ]);
+        DB::table('users')->insert([
+            'name' => 'emiliane',
+            'email' => 'emili1798@hotmail.com',
+            'password' => bcrypt('123123'),
+            'id_permiso' => '3',
+            'foto' => 'mujer4.jpg',
+            'created_at' => now(),
+        ]);
     }
 }

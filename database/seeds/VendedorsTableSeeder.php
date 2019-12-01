@@ -38,5 +38,23 @@ class VendedorsTableSeeder extends Seeder
             'created_at' => now(),
             'id_user' => '5',
         ]);
+        DB::table('vendedors')->insert([
+            'nombres' => 'brandon',
+            'apellidos' => 'mendoza',
+            'telefono' => '79910326',
+            'fecha_nac' => '1999-11-19 23:54:26',
+            'direccion' => 'c/febrecio',
+            'created_at' => now(),
+            'id_user' => '10',
+        ]);
+        DB::table('vendedors')->insert([
+            'nombres' => 'Teresa',
+            'apellidos' => 'Ribera',
+            'telefono' => '77028557',
+            'fecha_nac' => '1999-11-19 23:54:26',
+            'direccion' => 'c/ribera',
+            'created_at' => now(),
+            'id_user' => '13',
+        ]);
     }
 }

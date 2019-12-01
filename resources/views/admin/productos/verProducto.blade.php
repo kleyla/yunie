@@ -82,6 +82,7 @@
                         <h4 class="card-title">Valoraciones:</h4>
                     </div>
                     <div class="card-body">
+                        @if($valoraciones != null)
                         @foreach ($valoraciones as $valoracion)
                         <div class="row">
                             {{-- <div class="text-left"> --}}
@@ -103,6 +104,9 @@
                             {{-- </div> --}}
                         </div>
                         @endforeach
+                        @else
+                        
+                        @endif
                     </div>
                 </div>
             </div>
@@ -116,7 +120,8 @@
     $(document).ready(function() {
           $().ready(function() {
     // -------- CALIFICADO
-            var calificacion= @json($promedio);
+        var calificacion = @json($promedio);
+            
             console.log(calificacion);
 
             calif = parseFloat(calificacion);

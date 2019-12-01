@@ -130,26 +130,36 @@ class VendedorController extends Controller
     {
         $vendedor = DB::table('vendedors')->where('id_user', Auth::user()->id)->first();
         $usuario = User::find(Auth::user()->id);
-        $tiendas = DB::table('tiendas')->where('id_vendedor', $vendedor->id)->get();
-        return \view('vendedor.miPerfilVendedor', compact('vendedor', 'usuario', 'tiendas'));
+        if ($vendedor != null ){
+            $tiendas = DB::table('tiendas')->where('id_vendedor', $vendedor->id)->get();
+            return \view('vendedor.miPerfilVendedor', compact('vendedor', 'usuario', 'tiendas'));
+        }
     }
 
     public function misTiendas()
     {
         $vendedor = DB::table('vendedors')->where('id_user', Auth::user()->id)->first();
         $usuario = User::find(Auth::user()->id);
+        if ($vendedor != null ){
         $tiendas = DB::table('tiendas')->where('id_vendedor', $vendedor->id)->get();
         return \view('vendedor.misTiendas', \compact('vendedor', 'usuario', 'tiendas'));
+        }
+        
     }
     public function misProductos()
     {
         $vendedor = DB::table('vendedors')->where('id_user', Auth::user()->id)->first();
-        $productos = DB::select("select productos.*
+        if ($vendedor != null ){
+            $productos = DB::select("select productos.*
             from productos, tiendas
             where tiendas.id = productos.id_tienda and
                 tiendas.id_vendedor = $vendedor->id");
         // dd($productos);
         $categorias = DB::table('categorias')->where('estado', true)->get();
+        return \view('vendedor.misProductos', compact('productos', 'categorias'));
+        }
+        $categorias = [];
+        $productos = [];
         return \view('vendedor.misProductos', compact('productos', 'categorias'));
     }
     public function newProductoVendedor()
@@ -174,6 +184,7 @@ class VendedorController extends Controller
                 where tiendas.id = productos.id_tienda and
                     tiendas.id_vendedor = $vendedor->id");
             // dd($publicaciones);
+            // return $productos;
             return \view('vendedor.misPublicaciones', \compact('publicaciones', 'productos'));
         }
     }

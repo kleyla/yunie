@@ -100,10 +100,16 @@ class ProductoController extends Controller
         // $promedio = DB::select("select AVG(valoracions.puntuaciones)
         //     from valoracions
         //     where valoracions.estado = true");
-        $promedio = DB::table('valoracions')->where('estado', true)->avg('puntuaciones');
+        if ($valoraciones != null) {
+            $promedio = DB::table('valoracions')->where('estado', true)->avg('puntuaciones');
+            return \view('admin.productos.verProducto', \compact('producto', 'tags', 'imagenes', 'imagenMain', 'categoria', 'tienda', 'valoraciones', 'promedio'));
+        }else{
+            $promedio=0;
+            return \view('admin.productos.verProducto', \compact('producto', 'tags', 'imagenes', 'imagenMain', 'categoria', 'tienda', 'valoraciones', 'promedio'));
+        }
+        // 
         // dd($promedio);
-
-        return \view('admin.productos.verProducto', \compact('producto', 'tags', 'imagenes', 'imagenMain', 'categoria', 'tienda', 'valoraciones', 'promedio'));
+        // 
     }
 
     /**
