@@ -57,5 +57,70 @@ class TiendasTableSeeder extends Seeder
             'created_at' => now(),
             'id_ubicacion' => 3,
         ]);
+        //A partir de aqui se agregan nuevos seed´s
+        // tienda 4
+        DB::table('tiendas')->insert([
+            'nombre' => 'Columbia',
+            'nit' => 321586565,
+            'direccion' => 'c/chile y forus',
+            'telefono' => '60005556',
+            'foto' => 'columbia.jpg',
+            'id_vendedor' => 4,
+            'created_at' => now(),
+            'id_ubicacion' => 3,
+        ]);
+        // tienda 5
+        DB::table('tiendas')->insert([
+            'nombre' => 'Adidas',
+            'nit' => 321586565,
+            'direccion' => 'c/americas',
+            'telefono' => '60005556',
+            'foto' => 'adidas.jpg',
+            'id_vendedor' => 4,
+            'created_at' => now(),
+            'id_ubicacion' => 3,
+        ]);
+        // tienda 6
+        DB::table('tiendas')->insert([
+            'nombre' => 'GameStop',
+            'nit' => 321586565,
+            'direccion' => 'c/americas',
+            'telefono' => '60005556',
+            'foto' => 'gamestop.jpg',
+            'id_vendedor' => 4,
+            'created_at' => now(),
+            'id_ubicacion' => 3,
+        ]);
+        // tienda 7
+        DB::table('tiendas')->insert([
+            'nombre' => 'The limited',
+            'nit' => 321586565,
+            'direccion' => 'Cine center 2do anillo',
+            'telefono' => '60005556',
+            'foto' => 'the-limited.jpg',
+            'id_vendedor' => 5,
+            'created_at' => now(),
+            'id_ubicacion' => 3,
+        ]);
+        DB::table('tiendas')->insert([
+            'nombre' => 'Deportes',
+            'nit' => 321586565,
+            'direccion' => 'c/americas',
+            'telefono' => '60005556',
+            'foto' => 'deportes.jpg',
+            'id_vendedor' => 5,
+            'created_at' => now(),
+            'id_ubicacion' => 3,
+        ]);
+        DB::table('tiendas')->insert([
+            'nombre' => 'venca',
+            'nit' => 321586565,
+            'direccion' => 'c/americas',
+            'telefono' => '60005556',
+            'foto' => 'venca.jpg',
+            'id_vendedor' => 5,
+            'created_at' => now(),
+            'id_ubicacion' => 3,
+        ]);
     }
 }

@@ -73,6 +73,39 @@ class ClientesTableSeeder extends Seeder
             'created_at' => now(),
             'id_user' => '8',
         ]);
+        DB::table('clientes')->insert([
+            'nombres'=> 'Adolfo',
+            'apellidos'=> 'Mendoza Ribera',
+            'telefono'=>'74598756',
+            'fecha_nac' => '1999-11-19 23:54:26',
+            'direccion'=>'c/facundo monasterio',
+            'ci'=>'21548934',
+            'genero'=>'masculino',
+            'created_at' => now(),
+            'id_user' => '11',
+        ]);
+        DB::table('clientes')->insert([
+            'nombres'=> 'Martha',
+            'apellidos'=> 'Ruiz Solar',
+            'telefono'=>'77048460',
+            'fecha_nac' => '1999-11-19 23:54:26',
+            'direccion'=>'c/Lopez Mon',
+            'ci'=>'151564',
+            'genero'=>'femenino',
+            'created_at' => now(),
+            'id_user' => '14',
+        ]);
+        DB::table('clientes')->insert([
+            'nombres'=> 'Emiliane',
+            'apellidos'=> 'Suarez Liz',
+            'telefono'=>'77048460',
+            'fecha_nac' => '1999-11-19 23:54:26',
+            'direccion'=>'c/Monasterio',
+            'ci'=>'151564',
+            'genero'=>'femenino',
+            'created_at' => now(),
+            'id_user' => '15',
+        ]);
 
     }
 }
