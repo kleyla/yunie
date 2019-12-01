@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use Faker\Factory as Faker;
+use Illuminate\Support\Facades\DB;
 class VendedorsTableSeeder extends Seeder
 {
     /**
@@ -56,5 +57,20 @@ class VendedorsTableSeeder extends Seeder
             'created_at' => now(),
             'id_user' => '13',
         ]);
+        $i=118;
+        $faker = Faker::create('es_PE');
+    	foreach (range(1,50) as $index) {
+            $i=$i+1;
+            $fecha= $faker->date($format = 'Y-m-d', $max = 'now');
+	        DB::table('vendedors')->insert([
+                'nombres' => $faker->firstNameFemale,
+                'apellidos' => $faker->lastName,
+	            'telefono' => $faker->PhoneNumber,
+	            'fecha_nac' => $fecha,
+                'direccion'=>$faker->streetAddress,
+                'created_at' => now(),
+                'id_user' => $i,
+	        ]);
+	    }
     }
 }

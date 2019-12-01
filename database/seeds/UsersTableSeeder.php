@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Faker\Factory as Faker;
+use Illuminate\Support\Facades\DB;
 
 class UsersTableSeeder extends Seeder
 {
@@ -155,5 +157,28 @@ class UsersTableSeeder extends Seeder
             'foto' => 'hombre1.jpg',
             'created_at' => now(),
         ]);
+        //los nuevos clientes
+        $faker = Faker::create('es_PE');
+    	foreach (range(1,100) as $index) {
+	        DB::table('users')->insert([
+	            'name' => $faker->firstNameMale,
+	            'email' => $faker->email,
+	            'password' => bcrypt('123123'),
+                'id_permiso' => '3',
+                'foto' => $faker->imageUrl(640,480, null, false),
+                'created_at' => now(),
+	        ]);
+        }
+        //vendedores a partir del id 119
+        foreach (range(1,50) as $index) {
+	        DB::table('users')->insert([
+	            'name' => $faker->firstNameFemale,
+	            'email' => $faker->email,
+	            'password' => bcrypt('123123'),
+                'id_permiso' => '2',
+                'foto' => $faker->imageUrl(640,480, null, false),
+                'created_at' => now(),
+	        ]);
+	    }
     }
 }
