@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use Faker\Factory as Faker;
+use Illuminate\Support\Facades\DB;
 class ClientesTableSeeder extends Seeder
 {
     /**
@@ -106,6 +107,55 @@ class ClientesTableSeeder extends Seeder
             'created_at' => now(),
             'id_user' => '15',
         ]);
-
+        DB::table('clientes')->insert([
+            'nombres'=> 'Romeo',
+            'apellidos'=> 'Cespedes Liz',
+            'telefono'=>'77048460',
+            'fecha_nac' => '1999-11-19 23:54:26',
+            'direccion'=>'c/Monasterio',
+            'ci'=>'151564',
+            'genero'=>'masculino',
+            'created_at' => now(),
+            'id_user' => '16',
+        ]);
+        DB::table('clientes')->insert([
+            'nombres'=> 'Leo',
+            'apellidos'=> 'Cespedes Liz',
+            'telefono'=>'77048460',
+            'fecha_nac' => '1999-11-19 23:54:26',
+            'direccion'=>'c/Monasterio',
+            'ci'=>'151564',
+            'genero'=>'masculino',
+            'created_at' => now(),
+            'id_user' => '16',
+        ]);
+        DB::table('clientes')->insert([
+            'nombres'=> 'Juan',
+            'apellidos'=> 'Ruiz Liz',
+            'telefono'=>'77048460',
+            'fecha_nac' => '1999-11-19 23:54:26',
+            'direccion'=>'c/Monasterio',
+            'ci'=>'151564',
+            'genero'=>'masculino',
+            'created_at' => now(),
+            'id_user' => '16',
+        ]);
+        $i=18;
+        $faker = Faker::create('es_PE');
+    	foreach (range(1,100) as $index) {
+            $i=$i+1;
+            $fecha= $faker->date($format = 'Y-m-d', $max = 'now');
+	        DB::table('clientes')->insert([
+                'nombres' => $faker->firstNameMale,
+                'apellidos' => $faker->lastName,
+	            'telefono' => $faker->PhoneNumber,
+	            'fecha_nac' => $fecha,
+                'direccion'=>$faker->streetAddress,
+                'ci'=> $faker->dni,
+                'genero'=>'masculino',
+                'created_at' => now(),
+                'id_user' => $i,
+	        ]);
+	    }
     }
 }

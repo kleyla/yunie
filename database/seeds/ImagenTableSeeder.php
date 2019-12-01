@@ -70,6 +70,11 @@ class ImagenTableSeeder extends Seeder
 
         // añadiendo las imagenes de los productos nuevos seed's
         DB::table('imagens')->insert([
+            'imagen' => 'ropamen1.jpg',
+            'id_producto' => 18,
+            'created_at' => now(),
+        ]);
+        DB::table('imagens')->insert([
             'imagen' => 'ropamen1-1.jpg',
             'id_producto' => 18,
             'created_at' => now(),
@@ -77,6 +82,11 @@ class ImagenTableSeeder extends Seeder
         DB::table('imagens')->insert([
             'imagen' => 'ropamen1-2.jpg',
             'id_producto' => 18,
+            'created_at' => now(),
+        ]);
+        DB::table('imagens')->insert([
+            'imagen' => 'ropamen2.jpg',
+            'id_producto' => 19,
             'created_at' => now(),
         ]);
         DB::table('imagens')->insert([
@@ -100,6 +110,11 @@ class ImagenTableSeeder extends Seeder
             'created_at' => now(),
         ]);
         DB::table('imagens')->insert([
+            'imagen' => 'ropawomen1.jpg',
+            'id_producto' => 20,
+            'created_at' => now(),
+        ]);
+        DB::table('imagens')->insert([
             'imagen' => 'ropawomen1-1.jpg',
             'id_producto' => 20,
             'created_at' => now(),
@@ -115,6 +130,11 @@ class ImagenTableSeeder extends Seeder
             'created_at' => now(),
         ]);
         DB::table('imagens')->insert([
+            'imagen' => 'ropawomen2.jpg',
+            'id_producto' => 21,
+            'created_at' => now(),
+        ]);
+        DB::table('imagens')->insert([
             'imagen' => 'ropawomen2-1.jpg',
             'id_producto' => 21,
             'created_at' => now(),
@@ -122,6 +142,11 @@ class ImagenTableSeeder extends Seeder
         DB::table('imagens')->insert([
             'imagen' => 'ropawomen2-2.jpg',
             'id_producto' => 21,
+            'created_at' => now(),
+        ]);
+        DB::table('imagens')->insert([
+            'imagen' => 'adidas1.jpg',
+            'id_producto' => 22,
             'created_at' => now(),
         ]);
         DB::table('imagens')->insert([
@@ -140,6 +165,11 @@ class ImagenTableSeeder extends Seeder
             'created_at' => now(),
         ]);
         DB::table('imagens')->insert([
+            'imagen' => 'adidas2.jpg',
+            'id_producto' => 23,
+            'created_at' => now(),
+        ]);
+        DB::table('imagens')->insert([
             'imagen' => 'adidas2-1.jpg',
             'id_producto' => 23,
             'created_at' => now(),
@@ -152,6 +182,11 @@ class ImagenTableSeeder extends Seeder
         DB::table('imagens')->insert([
             'imagen' => 'adidas2-3.jpg',
             'id_producto' => 23,
+            'created_at' => now(),
+        ]);
+        DB::table('imagens')->insert([
+            'imagen' => 'adidas3.jpg',
+            'id_producto' => 24,
             'created_at' => now(),
         ]);
         DB::table('imagens')->insert([
@@ -170,6 +205,11 @@ class ImagenTableSeeder extends Seeder
             'created_at' => now(),
         ]);
         DB::table('imagens')->insert([
+            'imagen' => 'juegos1.jpg',
+            'id_producto' => 25,
+            'created_at' => now(),
+        ]);
+        DB::table('imagens')->insert([
             'imagen' => 'juegos1-1.jpg',
             'id_producto' => 25,
             'created_at' => now(),
@@ -185,6 +225,11 @@ class ImagenTableSeeder extends Seeder
             'created_at' => now(),
         ]);
         DB::table('imagens')->insert([
+            'imagen' => 'juegos2.jpg',
+            'id_producto' => 26,
+            'created_at' => now(),
+        ]);
+        DB::table('imagens')->insert([
             'imagen' => 'juegos2-1.jpg',
             'id_producto' => 26,
             'created_at' => now(),
@@ -192,6 +237,11 @@ class ImagenTableSeeder extends Seeder
         DB::table('imagens')->insert([
             'imagen' => 'juegos2-2.jpg',
             'id_producto' => 26,
+            'created_at' => now(),
+        ]);
+        DB::table('imagens')->insert([
+            'imagen' => 'juegos3.jpg',
+            'id_producto' => 27,
             'created_at' => now(),
         ]);
         DB::table('imagens')->insert([

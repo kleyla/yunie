@@ -28,5 +28,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CompartirTableSeeder::class);
         $this->call(ComentarTableSeeder::class);
         $this->call(MonedasTableSeeder::class);
+        
     }
 }

@@ -161,5 +161,328 @@ class TagsTableSeeder extends Seeder
             'id_producto' => 11,
             'created_at' => now(),
         ]);
+
+        //nuevos tags
+        DB::table('tags')->insert([
+            'nombre' => 'jean',
+            'id_producto' => 12,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'moda',
+            'id_producto' => 12,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'azul',
+            'id_producto' => 12,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'juvenil',
+            'id_producto' => 12,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'cuero',
+            'id_producto' => 13,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'moda',
+            'id_producto' => 13,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'negro',
+            'id_producto' => 13,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'juvenil',
+            'id_producto' => 13,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'femenino',
+            'id_producto' => 14,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'moda',
+            'id_producto' => 14,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'ocacion',
+            'id_producto' => 14,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'belleza',
+            'id_producto' => 14,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'cuero',
+            'id_producto' => 15,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'estudiantes',
+            'id_producto' => 15,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'negro',
+            'id_producto' => 15,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'salidas',
+            'id_producto' => 15,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'cuero',
+            'id_producto' => 16,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'estudiantes',
+            'id_producto' => 16,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'juvenil',
+            'id_producto' => 16,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'salidas',
+            'id_producto' => 16,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'tela',
+            'id_producto' => 17,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'estudiantes',
+            'id_producto' => 17,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'juvenil',
+            'id_producto' => 17,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'salidas',
+            'id_producto' => 17,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'sueter',
+            'id_producto' => 18,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'invierno',
+            'id_producto' => 18,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'frio',
+            'id_producto' => 18,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'varonil',
+            'id_producto' => 18,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'jean',
+            'id_producto' => 19,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'adulto',
+            'id_producto' => 19,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'moda',
+            'id_producto' => 19,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'varonil',
+            'id_producto' => 19,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'vestido',
+            'id_producto' => 20,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'navidad',
+            'id_producto' => 20,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'rojo',
+            'id_producto' => 20,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'femenino',
+            'id_producto' => 20,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'vestido',
+            'id_producto' => 21,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'belleza',
+            'id_producto' => 21,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'negro',
+            'id_producto' => 21,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'femenino',
+            'id_producto' => 21,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'zapatillas',
+            'id_producto' => 22,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'deporte',
+            'id_producto' => 22,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'negro',
+            'id_producto' => 22,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'blanco',
+            'id_producto' => 22,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'zapatillas',
+            'id_producto' => 23,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'deporte',
+            'id_producto' => 23,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'negro',
+            'id_producto' => 23,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'blanco',
+            'id_producto' => 23,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'zapatillas',
+            'id_producto' => 24,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'deporte',
+            'id_producto' => 24,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'adidas',
+            'id_producto' => 24,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'blanco',
+            'id_producto' => 24,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'familiar',
+            'id_producto' => 25,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'juegos',
+            'id_producto' => 25,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'infantil',
+            'id_producto' => 25,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'entretenimiento',
+            'id_producto' => 25,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'familiar',
+            'id_producto' => 26,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'juegos',
+            'id_producto' => 26,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'infantil',
+            'id_producto' => 26,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'entretenimiento',
+            'id_producto' => 26,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'familiar',
+            'id_producto' => 27,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'juegos',
+            'id_producto' => 27,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'infantil',
+            'id_producto' => 27,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'entretenimiento',
+            'id_producto' => 27,
+            'created_at' => now(),
+        ]);
+
     }
 }
