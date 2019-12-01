@@ -12,8 +12,8 @@
     <div class="sidebar-wrapper">
         <ul class="nav">
             <li class="nav-item @yield('dash') ">
-                <a class="nav-link " href="#" role="button" id="dropdownMenuLink"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
                     <i class="material-icons">dashboard</i>
                     <p> Dropdown link</p>
 
@@ -93,6 +93,12 @@
                 <a class="nav-link" href="{{ route('interacciones') }}">
                     <i class="material-icons">timeline</i>
                     <p>Interacciones</p>
+                </a>
+            </li>
+            <li class="nav-item @yield('reportes')">
+                <a class="nav-link" href="{{ route('reportes') }}">
+                    <i class="material-icons">timeline</i>
+                    <p>Reportes</p>
                 </a>
             </li>
             @endif

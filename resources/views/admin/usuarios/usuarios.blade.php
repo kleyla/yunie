@@ -14,6 +14,11 @@
                                 data-target="#addUser">
                                 <i class="material-icons">add_circle_outline</i>
                             </button>
+                            <a href="{{ route('downUsers')}}">
+                                <button type="button" rel="tooltip" class="btn btn-info" title="Reporte">
+                                    <i class="material-icons">add_circle_outline</i>
+                                </button>
+                            </a>
                         </div>
                         <div class="flash-message">
                             @foreach (['danger', 'warning', 'success', 'info'] as $msg)

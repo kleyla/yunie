@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\User;
 use DB;
 
@@ -89,6 +90,12 @@ class UserController extends Controller
     {
         return \view('admin.dash');
     }
+
+    public function downUsers()
+    {
+        return Excel::download(new UsersExport, 'users.xlsx');
+    }
+
     // APIS
     public function loginApi(Request $request)
     {

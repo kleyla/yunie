@@ -46,8 +46,8 @@
 <body class="">
     <div class="wrapper ">
 
-        @include('layouts.sidebar')
-        {{-- @include('layouts.sidebar2') --}}
+        {{-- @include('layouts.sidebar') --}}
+        @include('layouts.sidebar2')
 
 
         <div class="main-panel">

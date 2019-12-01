@@ -186,6 +186,12 @@ class ProductoController extends Controller
             where productos.id_tienda = tiendas.id and
                 publicacions.id_producto = productos.id and
                 productos.estado = true");
+        foreach ($productos as $producto) {
+            $producto->imagenes = Producto::getImagenes($producto->id);
+            $producto->megustas = Producto::getMegustas($producto->idp);
+            $producto->compartidos = Producto::getCompartirs($producto->idp);
+            $producto->comentarios = Producto::getComentarios($producto->idp);
+        }
         // dd($productos);
         return response()->json($productos, 200);
     }
