@@ -131,5 +131,29 @@ class UsersTableSeeder extends Seeder
             'foto' => 'mujer4.jpg',
             'created_at' => now(),
         ]);
+        DB::table('users')->insert([
+            'name' => 'romeo',
+            'email' => 'romeo@hotmail.com',
+            'password' => bcrypt('123123'),
+            'id_permiso' => '3',
+            'foto' => 'mujer4.jpg',
+            'created_at' => now(),
+        ]);
+        DB::table('users')->insert([
+            'name' => 'leo',
+            'email' => 'leo713@hotmail.com',
+            'password' => bcrypt('123123'),
+            'id_permiso' => '3',
+            'foto' => 'hombre2.jpg',
+            'created_at' => now(),
+        ]);
+        DB::table('users')->insert([
+            'name' => 'juan' ,
+            'email' => 'juan1235@hotmail.com',
+            'password' => bcrypt('123123'),
+            'id_permiso' => '3',
+            'foto' => 'hombre1.jpg',
+            'created_at' => now(),
+        ]);
     }
 }
