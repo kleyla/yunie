@@ -51,7 +51,9 @@ class Publicacion extends Model
         ->join('productos','productos.id_tienda','=','tiendas.id')
         ->join('publicacions','publicacions.id_producto','=','productos.id')
         ->where('tiendas.id','=',$idv)->orderBy('publicacions.id','DESC')->get();
+        foreach($tiendas as $tienda){
+            $tienda->imagenes= Producto::getImagenes($tienda->id_producto);
+        }
         return $tiendas;
     }
-
 }

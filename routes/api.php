@@ -25,6 +25,7 @@ Route::post('register','UserController@registerApi');
 Route::post('publicacion/{idp}/comentario/add','PublicacionController@publicacionComentarioAddApi');
 Route::post('buscar','PublicacionController@buscarApi');
 Route::get('example','PublicacionController@example');
+Route::get('example2','PublicacionController@example2');
 
 //Ver Publicaciones
 Route::get('cliente/{id}/publicaciones', 'PublicacionController@publicacionListaClienteApi');

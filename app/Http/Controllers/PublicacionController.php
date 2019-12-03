@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use PhpFanatic\clarifAI\ImageClient;
-
+use Illuminate\Support\Facades\Auth;
 use App\Publicacion;
 use App\Comentario;
 use App\Producto;
@@ -172,15 +172,19 @@ class PublicacionController extends Controller
     }
     
     public function publicacionListaClienteApi($idu){
-        // $cliente = Publicacion::find($idu);
-        // $cliente->publicaciones = Publicacion::getPublicacionbyUser($cliente->id);
-        // return response()->json($cliente, 200);
 
         $cliente = Cliente::find($idu);
         $cliente->publicaciones = Publicacion::getPublicacionbyUser($cliente->id);
         return response()->json($cliente, 200);
     }
 
+    public function example2(){
+        if (Auth::check()) {
+            
+        }else{
+
+        }
+    }
 
     public function publicacionComentarioAddApi(Request $request, $idp)
     {
@@ -264,6 +268,7 @@ class PublicacionController extends Controller
         // return \response()->json($productos, 200);
         return $productos;
     }
+
     public function example()
     {
         $array = [1, 1, 2, 3, 3, 3];
