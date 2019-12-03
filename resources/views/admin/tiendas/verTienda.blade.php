@@ -21,6 +21,7 @@
                             <p class=""> <strong>Direccion: </strong> {{ $tienda->direccion }}</p>
                             <p class=""> <strong>Telefono: </strong> {{ $tienda->telefono }}</p>
                             <p class=""> <strong>Nit:</strong> {{ $tienda->nit }}</p>
+                            <p class=""> <strong>Creado el:</strong> {{ $tienda->created_at }}</p>
                         </div>
                         <a href="{{route('editTienda', $tienda->id)}}">Editar tienda</a>
                     </div>
@@ -119,7 +120,7 @@
     const tienda = @json($ubicacion);
 
         function initMap() {
-            //console.log(tienda);
+            console.log(tienda);
 
             console.log(tienda);
             var iconBase1 = 'https://maps.google.com/mapfiles/kml/shapes/';

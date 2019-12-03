@@ -19,6 +19,7 @@ class VendedorsTableSeeder extends Seeder
             'fecha_nac' => '1999-11-19 23:54:26',
             'direccion' => 'c/salvatierra',
             'created_at' => now(),
+            'updated_at' => now(),
             'id_user' => '3',
         ]);
         DB::table('vendedors')->insert([
@@ -28,6 +29,7 @@ class VendedorsTableSeeder extends Seeder
             'fecha_nac' => '1999-11-19 23:54:26',
             'direccion' => 'c/Ernesto',
             'created_at' => now(),
+            'updated_at' => now(),
             'id_user' => '4',
         ]);
         DB::table('vendedors')->insert([
@@ -37,6 +39,7 @@ class VendedorsTableSeeder extends Seeder
             'fecha_nac' => '1999-11-19 23:54:26',
             'direccion' => 'c/monasterio',
             'created_at' => now(),
+            'updated_at' => now(),
             'id_user' => '5',
         ]);
         DB::table('vendedors')->insert([
@@ -46,6 +49,7 @@ class VendedorsTableSeeder extends Seeder
             'fecha_nac' => '1999-11-19 23:54:26',
             'direccion' => 'c/febrecio',
             'created_at' => now(),
+            'updated_at' => now(),
             'id_user' => '10',
         ]);
         DB::table('vendedors')->insert([
@@ -55,6 +59,7 @@ class VendedorsTableSeeder extends Seeder
             'fecha_nac' => '1999-11-19 23:54:26',
             'direccion' => 'c/ribera',
             'created_at' => now(),
+            'updated_at' => now(),
             'id_user' => '13',
         ]);
         $i=118;
@@ -69,6 +74,7 @@ class VendedorsTableSeeder extends Seeder
 	            'fecha_nac' => $fecha,
                 'direccion'=>$faker->streetAddress,
                 'created_at' => now(),
+                'updated_at' => now(),
                 'id_user' => $i,
 	        ]);
 	    }

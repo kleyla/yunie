@@ -14,12 +14,7 @@
                         <p class="card-category">Usuarios</p>
                         <h3 class="card-title">{{$usuarios}}</h3>
                     </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">people</i>Son los usuarios: administradores, vendedores y
-                            clientes.
-                        </div>
-                    </div>
+                    <div class="card-footer"></div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
@@ -31,11 +26,7 @@
                         <p class="card-category">Tiendas</p>
                         <h3 class="card-title">{{$tiendas}}</h3>
                     </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">store</i> Son las tiendas vigentes.
-                        </div>
-                    </div>
+                    <div class="card-footer"></div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
@@ -47,11 +38,7 @@
                         <p class="card-category">Productos</p>
                         <h3 class="card-title">{{$productos}}</h3>
                     </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">blur_circular</i>Cantidad de productos.
-                        </div>
-                    </div>
+                    <div class="card-footer"></div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
@@ -63,18 +50,14 @@
                         <p class="card-category">Categorias</p>
                         <h3 class="card-title">{{$categorias}}</h3>
                     </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">category</i> Just Updated
-                        </div>
-                    </div>
+                    <div class="card-footer"></div>
                 </div>
             </div>
         </div>
         <div class="row">
             {{-- <canvas id="myChart"></canvas> --}}
 
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="card">
                     <div class="card-header ">
                         {{-- <div class="ct-chart" id="dailySalesChart"></div> --}}
@@ -85,14 +68,26 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="card">
                     <div class="card-header ">
-                        <h4 class="card-title">Productos por fecha</h4>
+                        <h4 class="card-title">Me gustas por fecha</h4>
                     </div>
 
                     <div class="card-body">
-                        <canvas id="productosChart"></canvas>
+                        <canvas id="mgChart"></canvas>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header ">
+                        <h4 class="card-title">Tiendas seguidas por fecha</h4>
+                    </div>
+
+                    <div class="card-body">
+                        <canvas id="segChart"></canvas>
 
                     </div>
                 </div>
@@ -100,22 +95,32 @@
 
         </div>
         <div class="row">
+            {{-- <canvas id="myChart"></canvas> --}}
+
             <div class="col-md-6">
-                <div class="card card-chart">
-                    <div class="card-header card-header-danger">
-                        <div class="ct-chart" id="completedTasksChart"></div>
+                <div class="card">
+                    <div class="card-header ">
+                        {{-- <div class="ct-chart" id="dailySalesChart"></div> --}}
+                        <h4 class="card-title">Comentarios por fecha</h4>
                     </div>
                     <div class="card-body">
-                        <h4 class="card-title">Completed Tasks</h4>
-                        <p class="card-category">Last Campaign Performance</p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">access_time</i> campaign sent 2 days ago
-                        </div>
+                        <canvas id="comChart"></canvas>
                     </div>
                 </div>
             </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header ">
+                        <h4 class="card-title">Publicaciones compartidas por fecha</h4>
+                    </div>
+
+                    <div class="card-body">
+                        <canvas id="compChart"></canvas>
+
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
@@ -148,21 +153,104 @@
             // Configuration options go here
             options: {}
     });
-    var ctx = document.getElementById('productosChart').getContext('2d');
+    const fechasMg = @json($fechasMg);
+    console.log(fechasMg);
+    const cantMg = @json($cantMg);
+    console.log(cantMg);
+
+    var ctx = document.getElementById('mgChart').getContext('2d');
         var chart = new Chart(ctx, {
         // The type of chart we want to create
             type: 'bar',
             // The data for our dataset
             data: {
                 // labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                labels: fechas,
+                labels: fechasMg,
                 // label: ['jo', 'ni'],
                 datasets: [{
-                    label: 'Clientes',
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
+                    label: 'Me gustas',
+                    backgroundColor: '#8bc34a',
+                    borderColor: '#8bc34a',
                     // data:
-                    data: clientes
+                    data: cantMg
+                }]
+            },
+
+            // Configuration options go here
+            options: {}
+    });
+    const fechasCom = @json($fechasCom);
+    console.log(fechasCom);
+    const cantCom = @json($cantCom);
+    console.log(cantCom);
+
+    var ctx = document.getElementById('comChart').getContext('2d');
+        var chart = new Chart(ctx, {
+        // The type of chart we want to create
+            type: 'bar',
+            // The data for our dataset
+            data: {
+                // labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                labels: fechasCom,
+                // label: ['jo', 'ni'],
+                datasets: [{
+                    label: 'Comentarios',
+                    backgroundColor: '#ff9800',
+                    borderColor: '#ff9800',
+                    // data:
+                    data: cantCom
+                }]
+            },
+
+            // Configuration options go here
+            options: {}
+    });
+    const fechasComp = @json($fechasComp);
+    console.log(fechasComp);
+    const cantComp = @json($cantComp);
+    console.log(cantComp);
+
+    var ctx = document.getElementById('compChart').getContext('2d');
+        var chart = new Chart(ctx, {
+        // The type of chart we want to create
+            type: 'bar',
+            // The data for our dataset
+            data: {
+                // labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                labels: fechasComp,
+                // label: ['jo', 'ni'],
+                datasets: [{
+                    label: 'Compartidos',
+                    backgroundColor: '#f44336',
+                    borderColor: '#f44336',
+                    // data:
+                    data: cantComp
+                }]
+            },
+
+            // Configuration options go here
+            options: {}
+    });
+    const fechasSeg = @json($fechasSeg);
+    console.log(fechasSeg);
+    const cantSeg = @json($cantSeg);
+    console.log(cantSeg);
+
+    var ctx = document.getElementById('segChart').getContext('2d');
+        var chart = new Chart(ctx, {
+        // The type of chart we want to create
+            type: 'bar',
+            // The data for our dataset
+            data: {
+                // labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                labels: fechasSeg,
+                // label: ['jo', 'ni'],
+                datasets: [{
+                    label: 'Seguidores',
+                    backgroundColor: '#00bcd4',
+                    borderColor: '#00bcd4',
+                    // data:
+                    data: cantSeg
                 }]
             },
 

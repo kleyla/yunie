@@ -16,13 +16,14 @@
                                 <thead class=" text-primary">
                                     <th>ID</th>
                                     <th>Producto</th>
+                                    <th>Cliente</th>
+                                    <th>Comentario</th>
+                                    <th class="text-right">Fecha del me gusta.</th>
                                     <th>Descripcion</th>
                                     <th class="text-right">Precio oferta</th>
                                     <th class="text-right">Monedas</th>
                                     <th class="text-right">Fecha de pub.</th>
-                                    <th>Cliente</th>
-                                    <th>Comentario</th>
-                                    <th class="text-right">Fecha del me gusta.</th>
+
                                 </thead>
                                 <tbody>
                                     @foreach ($compartirs as $compartir)
@@ -31,16 +32,17 @@
                                         <td> <a
                                                 href="{{route('verProducto', $compartir->idp)}}">{{ $compartir->nombre }}</a>
                                         </td>
+                                        <td>{{ $compartir->nombres }}</td>
+                                        <td>{{ $compartir->comentario }}</td>
+                                        <td class="text-right"> <small>{{ $compartir->fecha }}</small> </td>
                                         <td> <a
                                                 href="{{route('verPublicacion', $compartir->id)}}">{{ $compartir->descripcion }}</a>
                                         </td>
                                         <td class="text-right">{{ $compartir->precio_oferta }}</td>
                                         <td class="text-right">{{ $compartir->cant_monedas }}</td>
 
-                                        <td class="text-right">{{ $compartir->created_at }}</td>
-                                        <td>{{ $compartir->nombres }}</td>
-                                        <td>{{ $compartir->comentario }}</td>
-                                        <td class="text-right">{{ $compartir->fecha }}</td>
+                                        <td class="text-right"> <small>{{ $compartir->created_at }}</small> </td>
+
                                     </tr>
                                     @endforeach
                                 </tbody>

@@ -15,6 +15,20 @@ class TiendaController extends Controller
     /**
      * Display a listing of the resource.
      *
+     *
+     *
+     *
+     *
+     * Este codigo a sido hardcodeado por Karen Rodriguez no tengo los derechos de autor pero las desveladas
+     *no fueron envano, pasare Sofware 1 porque si no me mato, quiero agradecer al inge Martinez por hacer de mi
+     *vida la que es hoy en dia, la de una futura ingeniera, a Yo-Landa, por estar alli conmigo durante tanto tiempo,
+     *en mis momentos mas dificil y para sacarme una sonrisa, aque una amiga, una mejor amiga, al guapo de Fabrizio
+     *por ser el MAS CAPO de la carrera, a Andrea Laruta por ser una amiga sincera, a Guillermo por tener paciencia conmigo...
+     *
+     *
+     *
+     *
+     *
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -88,7 +102,7 @@ class TiendaController extends Controller
             // $ubicacion = DB::table('ubicacions')->where('id', $tienda->id_ubicacion)->orderBy('created_at', 'DESC')->first();
             $ubicacion = DB::select("select ubicacions.*
                 from ubicacions
-                where ubicacions.id = $idt");
+                where ubicacions.id = $tienda->id_ubicacion");
             // dd($ubicacion);
             return \view('admin.tiendas.verTienda', compact('tienda', 'productos', 'vendedor', 'usuario', 'ubicacion'));
         }

@@ -16,12 +16,13 @@
                                 <thead class=" text-primary">
                                     <th>ID</th>
                                     <th>Producto</th>
+                                    <th>Cliente</th>
+                                    <th class="text-right">Fecha del me gusta.</th>
                                     <th>Descripcion</th>
                                     <th class="text-right">Precio oferta</th>
                                     <th class="text-right">Monedas</th>
                                     <th class="text-right">Fecha de pub.</th>
-                                    <th>Cliente</th>
-                                    <th class="text-right">Fecha del me gusta.</th>
+
                                 </thead>
                                 <tbody>
                                     @foreach ($megustas as $megusta)
@@ -30,6 +31,8 @@
                                         <td> <a
                                                 href="{{route('verProducto', $megusta->idp)}}">{{ $megusta->nombre }}</a>
                                         </td>
+                                        <td>{{ $megusta->nombres }}</td>
+                                        <td class="text-right">{{ $megusta->fecha }}</td>
                                         <td> <a
                                                 href="{{route('verPublicacion', $megusta->id)}}">{{ $megusta->descripcion }}</a>
                                         </td>
@@ -37,8 +40,7 @@
                                         <td class="text-right">{{ $megusta->cant_monedas }}</td>
 
                                         <td class="text-right">{{ $megusta->created_at }}</td>
-                                        <td>{{ $megusta->nombres }}</td>
-                                        <td class="text-right">{{ $megusta->fecha }}</td>
+
                                     </tr>
                                     @endforeach
                                 </tbody>

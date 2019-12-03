@@ -27,6 +27,37 @@ class TiendasTableSeeder extends Seeder
             'longitud' => '-63.18452764419169',
             'created_at' => now(),
         ]);
+        DB::table('ubicacions')->insert([
+            'latitud' => '17.780780593455393',
+            'longitud' => '-63.196582976673085',
+            'created_at' => now(),
+        ]);
+        DB::table('ubicacions')->insert([
+            'latitud' => '-17.78200016485102',
+            'longitud' => '-63.19092009085841',
+            'created_at' => now(),
+        ]);
+        DB::table('ubicacions')->insert([
+            'latitud' => '-17.78936799350305',
+            'longitud' => '-63.18452764419169',
+            'created_at' => now(),
+        ]);
+        DB::table('ubicacions')->insert([
+            'latitud' => '17.780780593455393',
+            'longitud' => '-63.196582976673085',
+            'created_at' => now(),
+        ]);
+        DB::table('ubicacions')->insert([
+            'latitud' => '-17.78200016485102',
+            'longitud' => '-63.19092009085841',
+            'created_at' => now(),
+        ]);
+        DB::table('ubicacions')->insert([
+            'latitud' => '17.780780593455393',
+            'longitud' => '-63.196582976673085',
+            'created_at' => now(),
+        ]);
+
         DB::table('tiendas')->insert([
             'nombre' => 'Diker bo',
             'nit' => 5684561,
@@ -67,7 +98,7 @@ class TiendasTableSeeder extends Seeder
             'foto' => 'columbia.jpg',
             'id_vendedor' => 4,
             'created_at' => now(),
-            'id_ubicacion' => 3,
+            'id_ubicacion' => 4,
         ]);
         // tienda 5
         DB::table('tiendas')->insert([
@@ -78,7 +109,7 @@ class TiendasTableSeeder extends Seeder
             'foto' => 'adidas.jpg',
             'id_vendedor' => 4,
             'created_at' => now(),
-            'id_ubicacion' => 3,
+            'id_ubicacion' => 5,
         ]);
         // tienda 6
         DB::table('tiendas')->insert([
@@ -89,7 +120,7 @@ class TiendasTableSeeder extends Seeder
             'foto' => 'gamestop.jpg',
             'id_vendedor' => 4,
             'created_at' => now(),
-            'id_ubicacion' => 3,
+            'id_ubicacion' => 6,
         ]);
         // tienda 7
         DB::table('tiendas')->insert([
@@ -100,7 +131,7 @@ class TiendasTableSeeder extends Seeder
             'foto' => 'the-limited.jpg',
             'id_vendedor' => 5,
             'created_at' => now(),
-            'id_ubicacion' => 3,
+            'id_ubicacion' => 7,
         ]);
         DB::table('tiendas')->insert([
             'nombre' => 'Deportes',
@@ -110,7 +141,7 @@ class TiendasTableSeeder extends Seeder
             'foto' => 'deportes.jpg',
             'id_vendedor' => 5,
             'created_at' => now(),
-            'id_ubicacion' => 3,
+            'id_ubicacion' => 8,
         ]);
         DB::table('tiendas')->insert([
             'nombre' => 'venca',
@@ -120,7 +151,7 @@ class TiendasTableSeeder extends Seeder
             'foto' => 'venca.jpg',
             'id_vendedor' => 5,
             'created_at' => now(),
-            'id_ubicacion' => 3,
+            'id_ubicacion' => 9,
         ]);
     }
 }

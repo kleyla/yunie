@@ -19,7 +19,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('123123'),
             'id_permiso' => '1',
             'foto' => 'karen.jpg',
-            'created_at' => now(),
+            'created_at' => '2019-11-10 00:00:00',
+            'updated_at' => now(),
         ]);
         DB::table('users')->insert([
             'name' => 'Joy',
@@ -27,7 +28,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('123123'),
             'id_permiso' => '1',
             'foto' => 'joy.jpg',
-            'created_at' => now(),
+            'created_at' => '2019-11-10 00:00:00',
+            'updated_at' => now(),
         ]);
         DB::table('users')->insert([
             'name' => 'Pedro',
@@ -35,7 +37,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('123123'),
             'id_permiso' => '2',
             'foto' => 'man01.jpg',
-            'created_at' => now(),
+            'created_at' => '2019-11-10 00:00:00',
+            'updated_at' => now(),
         ]);
         DB::table('users')->insert([
             'name' => 'Angela',
@@ -43,7 +46,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('123123'),
             'id_permiso' => '2',
             'foto' => 'wo.jpg',
-            'created_at' => now(),
+            'created_at' => '2019-11-10 00:00:00',
+            'updated_at' => now(),
         ]);
         DB::table('users')->insert([
             'name' => 'Jose',
@@ -51,7 +55,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('123123'),
             'id_permiso' => '2',
             'foto' => 'jose.jpg',
-            'created_at' => now(),
+            'created_at' => '2019-11-10 00:00:00',
+            'updated_at' => now(),
         ]);
         DB::table('users')->insert([
             'name' => 'Alejandra',
@@ -59,7 +64,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('123123'),
             'id_permiso' => '3',
             'foto' => 'alejandra.png',
-            'created_at' => now(),
+            'created_at' => '2019-11-10 00:00:00',
+            'updated_at' => now(),
         ]);
         DB::table('users')->insert([
             'name' => 'Mario',
@@ -67,7 +73,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('123123'),
             'id_permiso' => '3',
             'foto' => 'man03.jpg',
-            'created_at' => now(),
+            'created_at' => '2019-11-15 00:00:00',
+            'updated_at' => now(),
         ]);
         DB::table('users')->insert([
             'name' => 'liz',
@@ -75,7 +82,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('123123'),
             'id_permiso' => '3',
             'foto' => 'liz.png',
-            'created_at' => now(),
+            'created_at' => '2019-11-15 00:00:00',
+            'updated_at' => now(),
         ]);
         DB::table('users')->insert([
             'name' => 'german',
@@ -83,7 +91,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('123123'),
             'id_permiso' => '1',
             'foto' => 'hombre1.jpg',
-            'created_at' => now(),
+            'created_at' => '2019-11-15 00:00:00',
+            'updated_at' => now(),
         ]);
         DB::table('users')->insert([
             'name' => 'brandon',
@@ -91,7 +100,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('123123'),
             'id_permiso' => '2',
             'foto' => 'hombre2.jpg',
-            'created_at' => now(),
+            'created_at' => '2019-11-15 00:00:00',
+            'updated_at' => now(),
         ]);
         DB::table('users')->insert([
             'name' => 'adolfo',
@@ -99,7 +109,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('123123'),
             'id_permiso' => '3',
             'foto' => 'hombre3.jpg',
-            'created_at' => now(),
+            'created_at' => '2019-11-15 00:00:00',
+            'updated_at' => now(),
         ]);
         DB::table('users')->insert([
             'name' => 'cecilia',
@@ -107,7 +118,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('123123'),
             'id_permiso' => '1',
             'foto' => 'mujer1.jpg',
-            'created_at' => now(),
+            'created_at' => '2019-11-15 00:00:00',
+            'updated_at' => now(),
         ]);
         DB::table('users')->insert([
             'name' => 'teresa',
@@ -115,7 +127,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('123123'),
             'id_permiso' => '2',
             'foto' => 'mujer2.jpg',
-            'created_at' => now(),
+            'created_at' => '2019-11-15 00:00:00',
+            'updated_at' => now(),
         ]);
         DB::table('users')->insert([
             'name' => 'martha',
@@ -123,7 +136,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('123123'),
             'id_permiso' => '3',
             'foto' => 'mujer3.jpg',
-            'created_at' => now(),
+            'created_at' => '2019-11-25 00:00:00',
+            'updated_at' => now(),
         ]);
         DB::table('users')->insert([
             'name' => 'emiliane',
@@ -131,7 +145,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('123123'),
             'id_permiso' => '3',
             'foto' => 'mujer4.jpg',
-            'created_at' => now(),
+            'created_at' => '2019-11-25 00:00:00',
+            'updated_at' => now(),
         ]);
         DB::table('users')->insert([
             'name' => 'romeo',
@@ -139,7 +154,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('123123'),
             'id_permiso' => '3',
             'foto' => 'mujer4.jpg',
-            'created_at' => now(),
+            'created_at' => '2019-11-25 00:00:00',
+            'updated_at' => now(),
         ]);
         DB::table('users')->insert([
             'name' => 'leo',
@@ -147,7 +163,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('123123'),
             'id_permiso' => '3',
             'foto' => 'hombre2.jpg',
-            'created_at' => now(),
+            'created_at' => '2019-11-25 00:00:00',
+            'updated_at' => now(),
         ]);
         DB::table('users')->insert([
             'name' => 'juan' ,
@@ -155,7 +172,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('123123'),
             'id_permiso' => '3',
             'foto' => 'hombre1.jpg',
-            'created_at' => now(),
+            'created_at' => '2019-11-25 00:00:00',
+            'updated_at' => now(),
         ]);
         //los nuevos clientes
         $faker = Faker::create('es_PE');

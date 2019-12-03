@@ -57,6 +57,7 @@ class ProductoController extends Controller
         $producto->precio = $request->precio;
         $producto->stock = $request->stock;
         $producto->id_categoria = $request->categoria;
+        $producto->id_tienda = $request->tienda;
         $producto->save();
         if ($request->hasFile('foto')) {
             foreach ($request->file('foto') as $image) {
@@ -67,20 +68,22 @@ class ProductoController extends Controller
                 $client->AddImage($imagen);
                 $result = json_decode($client->Predict());
                 // dd($result);
-                $names = $result->outputs[0]->data->concepts;
-                $tags = array();
-                foreach ($names as $name) {
-                    array_push($tags, $name->name);
-                }
-                // dd($tags);
-                $i = 0;
-                while ($i < sizeof($tags)) {
-                    $newTag = new Tag();
-                    // dd($tags[$i]);
-                    $newTag->nombre = $tags[$i];
-                    $newTag->id_producto = $producto->id;
-                    $newTag->save();
-                    $i = $i + 1;
+                if ($result != null) {
+                    $names = $result->outputs[0]->data->concepts;
+                    $tags = array();
+                    foreach ($names as $name) {
+                        array_push($tags, $name->name);
+                    }
+                    // dd($tags);
+                    $i = 0;
+                    while ($i < sizeof($tags)) {
+                        $newTag = new Tag();
+                        // dd($tags[$i]);
+                        $newTag->nombre = $tags[$i];
+                        $newTag->id_producto = $producto->id;
+                        $newTag->save();
+                        $i = $i + 1;
+                    }
                 }
                 $destinationPath = 'img/productos/';
                 $filemane = uniqid() . $image->getClientOriginalName();
@@ -97,15 +100,15 @@ class ProductoController extends Controller
         $producto->mainFoto = $mainFoto->imagen;
         $producto->save();
         // dd($producto);
-        // $tagss = $request->tags;
-        // $array = explode(",", $tagss);
+        $tagss = $request->tags;
+        $array = explode(",", $tagss);
         // dd($array);
-        // foreach ($array as $tag1) {
-        //     $newTag = new Tag();
-        //     $newTag->nombre = $tag1;
-        //     $newTag->id_producto = $producto->id;
-        //     $newTag->save();
-        // }
+        foreach ($array as $tag1) {
+            $newTag = new Tag();
+            $newTag->nombre = $tag1;
+            $newTag->id_producto = $producto->id;
+            $newTag->save();
+        }
         $request->session()->flash('alert-success', 'Producto guardado con exito!');
         return \redirect()->route('productos');
     }

@@ -92,12 +92,54 @@ class TagsTableSeeder extends Seeder
             'created_at' => now(),
         ]);
         DB::table('tags')->insert([
+            'nombre' => 'telefono',
+            'id_producto' => 5,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
             'nombre' => 'tecnologia',
             'id_producto' => 5,
             'created_at' => now(),
         ]);
         DB::table('tags')->insert([
+            'nombre' => 'pantalla',
+            'id_producto' => 5,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'internet',
+            'id_producto' => 5,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'dispositivo',
+            'id_producto' => 5,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'telefonia movil',
+            'id_producto' => 5,
+            'created_at' => now(),
+        ]);
+
+        DB::table('tags')->insert([
+            'nombre' => 'equipo',
+            'id_producto' => 5,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'moderno',
+            'id_producto' => 5,
+            'created_at' => now(),
+        ]);
+
+        DB::table('tags')->insert([
             'nombre' => 'celular',
+            'id_producto' => 6,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'telefono',
             'id_producto' => 6,
             'created_at' => now(),
         ]);
@@ -107,7 +149,43 @@ class TagsTableSeeder extends Seeder
             'created_at' => now(),
         ]);
         DB::table('tags')->insert([
+            'nombre' => 'pantalla',
+            'id_producto' => 6,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'internet',
+            'id_producto' => 6,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'dispositivo',
+            'id_producto' => 6,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'telefonia movil',
+            'id_producto' => 6,
+            'created_at' => now(),
+        ]);
+
+        DB::table('tags')->insert([
+            'nombre' => 'equipo',
+            'id_producto' => 6,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'moderno',
+            'id_producto' => 6,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
             'nombre' => 'celular',
+            'id_producto' => 7,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'telefono',
             'id_producto' => 7,
             'created_at' => now(),
         ]);
@@ -117,7 +195,79 @@ class TagsTableSeeder extends Seeder
             'created_at' => now(),
         ]);
         DB::table('tags')->insert([
+            'nombre' => 'pantalla',
+            'id_producto' => 7,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'internet',
+            'id_producto' => 7,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'dispositivo',
+            'id_producto' => 7,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'telefonia movil',
+            'id_producto' => 7,
+            'created_at' => now(),
+        ]);
+
+        DB::table('tags')->insert([
+            'nombre' => 'equipo',
+            'id_producto' => 7,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'moderno',
+            'id_producto' => 7,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
             'nombre' => 'celular',
+            'id_producto' => 8,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'telefono',
+            'id_producto' => 8,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'tecnologia',
+            'id_producto' => 8,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'pantalla',
+            'id_producto' => 8,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'internet',
+            'id_producto' => 8,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'dispositivo',
+            'id_producto' => 8,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'telefonia movil',
+            'id_producto' => 8,
+            'created_at' => now(),
+        ]);
+
+        DB::table('tags')->insert([
+            'nombre' => 'equipo',
+            'id_producto' => 8,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'moderno',
             'id_producto' => 8,
             'created_at' => now(),
         ]);
@@ -131,8 +281,19 @@ class TagsTableSeeder extends Seeder
             'id_producto' => 9,
             'created_at' => now(),
         ]);
+
         DB::table('tags')->insert([
-            'nombre' => 'deportivo',
+            'nombre' => 'polo (deporte)',
+            'id_producto' => 9,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'ropa',
+            'id_producto' => 9,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'prenda',
             'id_producto' => 9,
             'created_at' => now(),
         ]);
@@ -142,12 +303,43 @@ class TagsTableSeeder extends Seeder
             'created_at' => now(),
         ]);
         DB::table('tags')->insert([
+            'nombre' => 'masculino',
+            'id_producto' => 9,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'hombre',
+            'id_producto' => 9,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'deportivo',
+            'id_producto' => 9,
+            'created_at' => now(),
+        ]);
+
+        DB::table('tags')->insert([
             'nombre' => 'blusa',
             'id_producto' => 10,
             'created_at' => now(),
         ]);
         DB::table('tags')->insert([
             'nombre' => 'mujer',
+            'id_producto' => 10,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'moda',
+            'id_producto' => 10,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'elegante',
+            'id_producto' => 10,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'glamour',
             'id_producto' => 10,
             'created_at' => now(),
         ]);
@@ -161,7 +353,21 @@ class TagsTableSeeder extends Seeder
             'id_producto' => 11,
             'created_at' => now(),
         ]);
-
+        DB::table('tags')->insert([
+            'nombre' => 'moda',
+            'id_producto' => 11,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'ropa',
+            'id_producto' => 11,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'pantalon vaquero',
+            'id_producto' => 11,
+            'created_at' => now(),
+        ]);
         //nuevos tags
         DB::table('tags')->insert([
             'nombre' => 'jean',
@@ -174,13 +380,33 @@ class TagsTableSeeder extends Seeder
             'created_at' => now(),
         ]);
         DB::table('tags')->insert([
-            'nombre' => 'azul',
+            'nombre' => 'mujer',
+            'id_producto' => 12,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'pantalón',
+            'id_producto' => 12,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'ropa',
+            'id_producto' => 12,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'glamour',
             'id_producto' => 12,
             'created_at' => now(),
         ]);
         DB::table('tags')->insert([
             'nombre' => 'juvenil',
             'id_producto' => 12,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'zapato',
+            'id_producto' => 13,
             'created_at' => now(),
         ]);
         DB::table('tags')->insert([
@@ -194,13 +420,33 @@ class TagsTableSeeder extends Seeder
             'created_at' => now(),
         ]);
         DB::table('tags')->insert([
-            'nombre' => 'negro',
+            'nombre' => 'calzado',
             'id_producto' => 13,
             'created_at' => now(),
         ]);
         DB::table('tags')->insert([
-            'nombre' => 'juvenil',
+            'nombre' => 'clásico',
             'id_producto' => 13,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'tacones',
+            'id_producto' => 14,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'calzado',
+            'id_producto' => 14,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'mujer',
+            'id_producto' => 14,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'zapato',
+            'id_producto' => 14,
             'created_at' => now(),
         ]);
         DB::table('tags')->insert([
@@ -210,11 +456,6 @@ class TagsTableSeeder extends Seeder
         ]);
         DB::table('tags')->insert([
             'nombre' => 'moda',
-            'id_producto' => 14,
-            'created_at' => now(),
-        ]);
-        DB::table('tags')->insert([
-            'nombre' => 'ocacion',
             'id_producto' => 14,
             'created_at' => now(),
         ]);
@@ -229,27 +470,37 @@ class TagsTableSeeder extends Seeder
             'created_at' => now(),
         ]);
         DB::table('tags')->insert([
-            'nombre' => 'estudiantes',
-            'id_producto' => 15,
-            'created_at' => now(),
-        ]);
-        DB::table('tags')->insert([
-            'nombre' => 'negro',
-            'id_producto' => 15,
-            'created_at' => now(),
-        ]);
-        DB::table('tags')->insert([
-            'nombre' => 'salidas',
+            'nombre' => 'zapato',
             'id_producto' => 15,
             'created_at' => now(),
         ]);
         DB::table('tags')->insert([
             'nombre' => 'cuero',
+            'id_producto' => 15,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'moda',
+            'id_producto' => 15,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'calzado',
+            'id_producto' => 15,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'clásico',
+            'id_producto' => 15,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'zapatilla',
             'id_producto' => 16,
             'created_at' => now(),
         ]);
         DB::table('tags')->insert([
-            'nombre' => 'estudiantes',
+            'nombre' => 'zapato',
             'id_producto' => 16,
             'created_at' => now(),
         ]);
@@ -259,17 +510,42 @@ class TagsTableSeeder extends Seeder
             'created_at' => now(),
         ]);
         DB::table('tags')->insert([
-            'nombre' => 'salidas',
+            'nombre' => 'calazado',
             'id_producto' => 16,
             'created_at' => now(),
         ]);
         DB::table('tags')->insert([
-            'nombre' => 'tela',
+            'nombre' => 'moda',
+            'id_producto' => 16,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'ropa',
+            'id_producto' => 16,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'calazado',
+            'id_producto' => 16,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'zapatilla',
             'id_producto' => 17,
             'created_at' => now(),
         ]);
         DB::table('tags')->insert([
-            'nombre' => 'estudiantes',
+            'nombre' => 'moda',
+            'id_producto' => 17,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'calzado',
+            'id_producto' => 17,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'zapato',
             'id_producto' => 17,
             'created_at' => now(),
         ]);
@@ -279,7 +555,12 @@ class TagsTableSeeder extends Seeder
             'created_at' => now(),
         ]);
         DB::table('tags')->insert([
-            'nombre' => 'salidas',
+            'nombre' => 'deporte',
+            'id_producto' => 17,
+            'created_at' => now(),
+        ]);
+        DB::table('tags')->insert([
+            'nombre' => 'nike',
             'id_producto' => 17,
             'created_at' => now(),
         ]);
@@ -483,6 +764,5 @@ class TagsTableSeeder extends Seeder
             'id_producto' => 27,
             'created_at' => now(),
         ]);
-
     }
 }

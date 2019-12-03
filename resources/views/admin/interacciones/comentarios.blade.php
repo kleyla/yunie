@@ -16,13 +16,14 @@
                                 <thead class=" text-primary">
                                     {{-- <th>ID</th> --}}
                                     <th>Producto</th>
+                                    <th>Cliente</th>
+                                    <th>Comentario</th>
+                                    <th class="text-right">Fecha del me gusta.</th>
                                     <th>Descripcion</th>
                                     <th class="text-right">Precio oferta</th>
                                     <th class="text-right">Monedas</th>
                                     <th class="text-right">Fecha de pub.</th>
-                                    <th>Cliente</th>
-                                    <th>Comentario</th>
-                                    <th class="text-right">Fecha del me gusta.</th>
+
                                 </thead>
                                 <tbody>
                                     @foreach ($comentarios as $comentario)
@@ -31,16 +32,17 @@
                                         <td> <a
                                                 href="{{route('verProducto', $comentario->idp)}}">{{ $comentario->nombre }}</a>
                                         </td>
+                                        <td>{{ $comentario->nombres }}</td>
+                                        <td>{{ $comentario->comentario }}</td>
+                                        <td class="text-right"> <small>{{ $comentario->fecha }}</small> </td>
                                         <td> <a
                                                 href="{{route('verPublicacion', $comentario->id)}}">{{ $comentario->descripcion }}</a>
                                         </td>
                                         <td class="text-right">{{ $comentario->precio_oferta }}</td>
                                         <td class="text-right">{{ $comentario->cant_monedas }}</td>
 
-                                        <td class="text-right">{{ $comentario->created_at }}</td>
-                                        <td>{{ $comentario->nombres }}</td>
-                                        <td>{{ $comentario->comentario }}</td>
-                                        <td class="text-right">{{ $comentario->fecha }}</td>
+                                        <td class="text-right"> <small>{{ $comentario->created_at }}</small> </td>
+
                                     </tr>
                                     @endforeach
                                 </tbody>
