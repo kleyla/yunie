@@ -46,4 +46,12 @@ class Publicacion extends Model
         return $tiendas;
     }
 
+    public static function getPublicacionbyStore($idv){
+        $tiendas = DB::table('tiendas')
+        ->join('productos','productos.id_tienda','=','tiendas.id')
+        ->join('publicacions','publicacions.id_producto','=','productos.id')
+        ->where('tiendas.id_vendedor','=',$idv)->orderBy('publicacions.id','DESC')->get();
+        return $tiendas;
+    }
+
 }

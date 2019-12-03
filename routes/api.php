@@ -25,8 +25,11 @@ Route::post('register','UserController@registerApi');
 Route::post('publicacion/{idp}/comentario/add','PublicacionController@publicacionComentarioAddApi');
 Route::post('buscar','PublicacionController@buscarApi');
 Route::get('example','PublicacionController@example');
+
+//Ver Publicaciones
 Route::get('cliente/{id}/publicaciones', 'PublicacionController@publicacionListaClienteApi');
 Route::get('vendedor/{id}/publicaciones', 'PublicacionController@publicacionListaVendedorApi');
+Route::get('tienda/{id}/publicaciones', 'PublicacionController@publicacionListaTiendaApi');
 
 
 // IMAGENES

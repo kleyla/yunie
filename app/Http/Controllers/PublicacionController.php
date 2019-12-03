@@ -12,6 +12,7 @@ use App\ComentarPub;
 use App\CompartirPub;
 use App\User;
 use App\Vendedor;
+use App\Tienda;
 use App\Cliente;
 use App\Tag;
 use DB;
@@ -156,10 +157,18 @@ class PublicacionController extends Controller
         return response()->json($publicacion, 200);
     }
 
+    // No esta en uso esta api pero si sirve
     public static function publicacionListaVendedorApi($idv){
         $vendedor=Vendedor::find($idv);
         $vendedor->publicaciones=Publicacion::getPublicacionbySeller($vendedor->id);
         return response()->json($vendedor, 200);
+    }
+
+
+    public static function publicacionListaTiendaApi($idv){
+        $tienda=Tienda::find($idv);
+        $tienda->publicaciones=Publicacion::getPublicacionbyStore($tienda->id);
+        return response()->json($tienda, 200);
     }
     
     public function publicacionListaClienteApi($idu){
