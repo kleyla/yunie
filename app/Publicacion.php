@@ -3,7 +3,10 @@
 namespace App;
 
 use App\ComentarPub;
+use App\CompartirPub;
 use App\Cliente;
+use App\Producto;
+use App\Tienda;
 use DB;
 
 use Illuminate\Database\Eloquent\Model;
@@ -25,4 +28,22 @@ class Publicacion extends Model
         // dd($comentarios);
         return $comentarios;
     }
+
+    public static function getPublicacionbyUser($idp){
+        $compartidos=CompartirPub::where('id_cliente',$idp)->orderBy('id_publicacion', 'DESC')->get();
+             foreach($compartidos as $compartido){
+                $publicacion = Publicacion::where('id',$compartido->id_publicacion)->first();
+                $compartido->idPublicacion = $publicacion->id;
+             }
+        return $compartidos;
+    }
+
+    public static function getPublicacionbySeller($idv){
+        $tiendas = DB::table('tiendas')
+        ->join('productos','productos.id_tienda','=','tiendas.id')
+        ->join('publicacions','publicacions.id_producto','=','productos.id')
+        ->where('tiendas.id_vendedor','=',$idv)->orderBy('publicacions.id','DESC')->get();
+        return $tiendas;
+    }
+
 }

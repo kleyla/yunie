@@ -67,7 +67,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="categoria">Seleccione una categoria</label>
+                                        <label for="categoria">Seleccione una Tienda</label>
                                         <select class="form-control" data-style="btn btn-link" id="categoria"
                                             name="categoria">
                                             @foreach ($tiendas as $tienda)

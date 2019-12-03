@@ -9,7 +9,9 @@ use App\Comentario;
 use App\Producto;
 use Illuminate\Http\Request;
 use App\ComentarPub;
+use App\CompartirPub;
 use App\User;
+use App\Vendedor;
 use App\Cliente;
 use App\Tag;
 use DB;
@@ -141,17 +143,36 @@ class PublicacionController extends Controller
     }
 
     // API
-    public function publicacionApi($idp)
+    public static function publicacionApi($idp)
     {
         $publicacion = Publicacion::find($idp);
         // dd($publicacion);
         // foreach ($publicacion as $publi) {
+        
         $publicacion->comentarios = Publicacion::getComentarios($publicacion->id);
         $publicacion->imagenes = Producto::getImagenes($publicacion->id_producto);
 
         // }
         return response()->json($publicacion, 200);
     }
+
+    public static function publicacionListaVendedorApi($idv){
+        $vendedor=Vendedor::find($idv);
+        $vendedor->publicaciones=Publicacion::getPublicacionbySeller($vendedor->id);
+        return response()->json($vendedor, 200);
+    }
+    
+    public function publicacionListaClienteApi($idu){
+        // $cliente = Publicacion::find($idu);
+        // $cliente->publicaciones = Publicacion::getPublicacionbyUser($cliente->id);
+        // return response()->json($cliente, 200);
+
+        $cliente = Cliente::find($idu);
+        $cliente->publicaciones = Publicacion::getPublicacionbyUser($cliente->id);
+        return response()->json($cliente, 200);
+    }
+
+
     public function publicacionComentarioAddApi(Request $request, $idp)
     {
         if ($request->descripcion == null) {
