@@ -265,8 +265,9 @@ class PublicacionController extends Controller
             }
         }
         // dd($productos);
-        // return \response()->json($productos, 200);
-        return $productos;
+        $jsonObject = array('productos' => $productos);
+        return \response()->json($jsonObject, 200);
+        //return $productos;
     }
 
     public function example()
