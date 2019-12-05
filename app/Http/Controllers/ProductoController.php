@@ -6,7 +6,7 @@ use App\Producto;
 use App\Imagen;
 use App\Tag;
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
 use PhpFanatic\clarifAI\ImageClient;
 
 

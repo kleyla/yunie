@@ -15,7 +15,7 @@ use App\Vendedor;
 use App\Tienda;
 use App\Cliente;
 use App\Tag;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class PublicacionController extends Controller
 {

@@ -7,7 +7,7 @@ use App\CompartirPub;
 use App\Cliente;
 use App\Producto;
 use App\Tienda;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Database\Eloquent\Model;
 
