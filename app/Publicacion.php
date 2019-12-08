@@ -7,7 +7,7 @@ use App\CompartirPub;
 use App\Cliente;
 use App\Producto;
 use App\Tienda;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -38,6 +38,7 @@ class Publicacion extends Model
         return $compartidos;
     }
 
+
     public static function getPublicacionbySeller($idv){
         $tiendas = DB::table('tiendas')
         ->join('productos','productos.id_tienda','=','tiendas.id')
@@ -53,6 +54,9 @@ class Publicacion extends Model
         ->where('tiendas.id','=',$idv)->orderBy('publicacions.id','DESC')->get();
         foreach($tiendas as $tienda){
             $tienda->imagenes= Producto::getImagenes($tienda->id_producto);
+            $tienda->megustas = Producto::getMegustas($tienda->id_producto);
+            $tienda->compartidos = Producto::getCompartirs($tienda->id_producto);
+            $tienda->comentarios = Producto::getComentarios($tienda->id_producto);
         }
         return $tiendas;
     }

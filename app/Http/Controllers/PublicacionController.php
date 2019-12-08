@@ -15,7 +15,7 @@ use App\Vendedor;
 use App\Tienda;
 use App\Cliente;
 use App\Tag;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class PublicacionController extends Controller
 {
@@ -149,7 +149,9 @@ class PublicacionController extends Controller
         $publicacion = Publicacion::find($idp);
         // dd($publicacion);
         // foreach ($publicacion as $publi) {
-        
+        // $publicacion->megustas = Producto::getMegustas($publicacion->id);
+        // $publicacion->compartidos = Producto::getCompartirs($publicacion->id);
+        // $publicacion->comentarios = Producto::getComentarios($publicacion->id);
         $publicacion->comentarios = Publicacion::getComentarios($publicacion->id);
         $publicacion->imagenes = Producto::getImagenes($publicacion->id_producto);
 
@@ -158,32 +160,32 @@ class PublicacionController extends Controller
     }
 
     // No esta en uso esta api pero si sirve
-    public static function publicacionListaVendedorApi($idv){
-        $vendedor=Vendedor::find($idv);
-        $vendedor->publicaciones=Publicacion::getPublicacionbySeller($vendedor->id);
+    public static function publicacionListaVendedorApi($idv)
+    {
+        $vendedor = Vendedor::find($idv);
+        $vendedor->publicaciones = Publicacion::getPublicacionbySeller($vendedor->id);
         return response()->json($vendedor, 200);
     }
 
 
-    public static function publicacionListaTiendaApi($idv){
-        $tienda=Tienda::find($idv);
-        $tienda->publicaciones=Publicacion::getPublicacionbyStore($tienda->id);
+    public static function publicacionListaTiendaApi($idv)
+    {
+        $tienda = Tienda::find($idv);
+        $tienda->publicaciones = Publicacion::getPublicacionbyStore($tienda->id);
         return response()->json($tienda, 200);
     }
-    
-    public function publicacionListaClienteApi($idu){
+
+    public function publicacionListaClienteApi($idu)
+    {
 
         $cliente = Cliente::find($idu);
         $cliente->publicaciones = Publicacion::getPublicacionbyUser($cliente->id);
         return response()->json($cliente, 200);
     }
 
-    public function example2(){
-        if (Auth::check()) {
-            
-        }else{
-
-        }
+    public function example2()
+    {
+        if (Auth::check()) { } else { }
     }
 
     public function publicacionComentarioAddApi(Request $request, $idp)
@@ -217,7 +219,8 @@ class PublicacionController extends Controller
     {
         $client = new ImageClient('23cfeedf53b3466486817f265e3ac790');
         $client->SetLanguage('es');
-        $imagen = file_get_contents($request->photo);
+        // $imagen = file_get_contents($request->photo);
+        $imagen = $request->photo;
         $client->AddImage($imagen);
         $result = json_decode($client->Predict());
         // dd($result);
@@ -227,7 +230,7 @@ class PublicacionController extends Controller
         foreach ($names as $name) {
             array_push($tags, $name->name);
         }
-        // return $tags;
+        return $tags;
         $productosTag = array();
         // $productos = Producto::where('estado', true)->get();
         // foreach ($productos as $producto) {
@@ -260,13 +263,13 @@ class PublicacionController extends Controller
         $productos = array();
         foreach ($idProductos as $idp) {
             $prod = Producto::find($idp);
-            if ($prod != null) {
+            if ($prod->estado != null) {
                 array_push($productos, $prod);
             }
         }
         // dd($productos);
-        // return \response()->json($productos, 200);
-        return $productos;
+        return \response()->json($productos, 200);
+        // return $productos;
     }
 
     public function example()

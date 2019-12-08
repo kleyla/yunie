@@ -40,3 +40,18 @@ Route::get('/file/imageUser/{fileName}', 'UserController@imageUser');
 Route::get('/file/imageProducto/{fileName}', 'ProductoController@imageProducto');
 Route::get('/file/imageTienda/{fileName}', 'ProductoController@imageTienda');
 
+// ME GUSTA
+Route::get('sigoTienda/{ipt}/{uid}', 'SeguirController@sigoTiendaApi');
+
+Route::post('megustaAdd/{idp}', 'MegustaController@megustaAddApi');
+Route::get('megustas/{ipd}', 'MegustaController@megustasApi');
+
+//CARRITO
+Route::get('getCarrito/{uid}', 'CarritoController@getCarritoApi');
+Route::get('getCarritoTotal/{uid}', 'CarritoController@getCarritoTotalApi');
+Route::post('comprar', 'CarritoController@comprarApi');
+
+Route::post('carritoAdd/{idp}', 'CarritoController@carritoAddApi');
+Route::post('delCartProd', 'CarritoController@delCartProdApi');
+
+Route::get('getProductosTienda/{idt}', 'ProductoController@getProductosTiendaApi');

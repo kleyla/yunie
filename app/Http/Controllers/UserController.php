@@ -9,7 +9,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\User;
 use App\Vendedor;
 use App\Cliente;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Compartir;
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class CompartirController extends Controller
 {

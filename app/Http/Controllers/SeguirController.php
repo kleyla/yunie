@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Seguir;
+use App\Tienda;
+use App\SeguirTienda;
+use App\User;
+use App\Cliente;
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class SeguirController extends Controller
 {
@@ -103,5 +107,22 @@ class SeguirController extends Controller
     public function destroy(Seguir $seguir)
     {
         //
+    }
+
+    // APIS
+    public function sigoTiendaApi($idt, $uid)
+    {
+        $tienda = Tienda::find($idt);
+        $user = User::where('id_firebase', $uid)->first();
+        if ($tienda != null && $user != null) {
+            $cliente = Cliente::where('id_user', $user->id)->first();
+            $seguirTienda = SeguirTienda::where('id_tienda', $tienda->id)
+                ->where('id_cliente', $cliente->id)->first();
+            if ($seguirTienda == null) {
+                return \response()->json(false, 200);
+            } else {
+                return \response()->json(true, 200);
+            }
+        }
     }
 }

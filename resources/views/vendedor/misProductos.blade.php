@@ -11,8 +11,7 @@
                         <h4 class="card-title ">Productos</h4>
                         <div class="text-right">
                             <a href="{{ route('newProductoVendedor')}}">
-                                <button type="button" rel="tooltip" class="btn btn-info" title="Agregar"
-                                    data-toggle="modal" data-target="#addUser">
+                                <button type="button" rel="tooltip" class="btn btn-info" title="Agregar">
                                     <i class="material-icons">add_circle_outline</i>
                                 </button>
                             </a>
@@ -66,65 +65,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-
-{{-- ADD USER --}}
-<div class="modal fade" id="addUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form class="form" method="POST" action="{{ route('userAdd')}}" id="registrationform"
-                enctype="multipart/form-data">
-                @csrf
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Nombres</label>
-                        <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp"
-                            placeholder="Nombres">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
-                            placeholder="Email">
-                        <small id="emailHelp" class="form-text text-muted">Nosotros nunca compartiremos tu email con
-                            alguien mas.</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="password" name="password"
-                            placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                        <label for="categoria">Example select</label>
-                        <select class="form-control" data-style="btn btn-link" id="categoria">
-                            @foreach ($categorias as $categoria)
-                            <option name="categoria" value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="col-md-12">
-                        <fieldset>
-                            <label class="form-control-label" for="input-first-name">Seleccionar foto de perfil</label>
-                            <br>
-                            <section class="">
-                                <input type="file" name="foto" id="foto">
-                            </section>
-                        </fieldset>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-primary">Guardar</button>
-                </div>
-            </form>
-
         </div>
     </div>
 </div>
