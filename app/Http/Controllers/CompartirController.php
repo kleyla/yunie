@@ -3,16 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Compartir;
-use App\Publicacion;
-use App\Producto;
-use App\Imagen;
-use App\User;
-use App\Cliente;
-use App\ComentarPub;
-use App\CompartirPub;
-use App\Moneda;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use DB;
 
 class CompartirController extends Controller
 {
@@ -109,39 +101,5 @@ class CompartirController extends Controller
     public function destroy(Compartir $compartir)
     {
         //
-    }
-
-    //APIS
-    public function compartirApi($idp)
-    {
-        $publicacion = Publicacion::find($idp);
-        if ($publicacion != null) {
-            $producto = Producto::find($publicacion->id_producto);
-            $publicacion->producto = $producto;
-            $publicacion->imagenes = Imagen::where('id_producto', $producto->id)->get();
-            return response()->json($publicacion, 200);
-        }
-    }
-    public function compartirAddApi(Request $request, $idp)
-    {
-        $publicacion = Publicacion::find($idp);
-        $user = User::where('id_firebase', $request->id_firebase)->first();
-        if ($publicacion != null && $user != null) {
-            $cliente = Cliente::where('id_user', $user->id)->first();
-            $compartir = Compartir::where('estado', true)
-                ->orderBy('created_at', 'DESC')->first();
-            $comparti_pub = new CompartirPub();
-            $comparti_pub->descripcion = $request->descripcion;
-            $comparti_pub->id_cliente = $cliente->id;
-            $comparti_pub->id_publicacion = $publicacion->id;
-            $comparti_pub->id_compartir = $compartir->id;
-            $comparti_pub->save();
-            $monedas_detalle = new Moneda();
-            $monedas_detalle->id_compartir = $compartir->id;
-            $monedas_detalle->save();
-            $cliente->monedas = $cliente->monedas + $compartir->cant_monedas;
-            $cliente->save();
-            return response()->json($comparti_pub, 200);
-        }
     }
 }

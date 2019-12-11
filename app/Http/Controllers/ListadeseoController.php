@@ -3,11 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Listadeseo;
-use App\User;
-use App\Cliente;
-use App\Producto;
-use App\Listaproducto;
-use App\Publicacion;
 use Illuminate\Http\Request;
 
 class ListadeseoController extends Controller
@@ -86,31 +81,5 @@ class ListadeseoController extends Controller
     public function destroy(Listadeseo $listadeseo)
     {
         //
-    }
-    // API
-    public function getListaDeseoApi($uid)
-    {
-        $user = User::where('id_firebase', $uid)->first();
-        if ($user != null) {
-            $cliente = Cliente::where('id_user', $user->id)->first();
-            $listadeseo = Listadeseo::where('id_cliente', $cliente->id)->first();
-            $listaProductos = Listaproducto::where('id_listadeseo', $listadeseo->id)
-                ->where('estado', true)->get();
-            foreach ($listaProductos as $lista) {
-                $lista->producto = Producto::find($lista->id_producto);
-                $lista->publicacion = Publicacion::where('id_producto', $lista->id_producto)
-                    ->orderBy('created_at', 'DESC')->first();
-            }
-            return response()->json($listaProductos, 200);
-        }
-    }
-    public function delListadeseoProdApi(Request $request)
-    {
-        $listaProducto = Listaproducto::find($request->id_listaProducto);
-        if ($listaProducto != null) {
-            $listaProducto->estado = false;
-            $listaProducto->save();
-            return response()->json($listaProducto, 200);
-        }
     }
 }

@@ -8,19 +8,13 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-primary">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h4 class="card-title ">Publicaciones</h4>
-                            </div>
-
-                            <div class="col-md-6 text-right">
-                                <button type="button" rel="tooltip" class="btn btn-info" title="Agregar"
-                                    data-toggle="modal" data-target="#addUser">
-                                    <i class="material-icons">add_circle_outline</i>
-                                </button>
-                            </div>
+                        <h4 class="card-title ">Publicaciones</h4>
+                        <div class="text-right">
+                            <button type="button" rel="tooltip" class="btn btn-info" title="Agregar" data-toggle="modal"
+                                data-target="#addUser">
+                                <i class="material-icons">add_circle_outline</i>
+                            </button>
                         </div>
-
                         <div class="flash-message">
                             @foreach (['danger', 'warning', 'success', 'info'] as $msg)
                             @if(Session::has('alert-' . $msg))
@@ -52,7 +46,7 @@
                                         </td>
                                         <td>{{ $publicacion->descripcion }}</td>
                                         @php
-                                        $precio = $publicacion->precio_oferta * 100
+                                            $precio = $publicacion->precio_oferta * 100
                                         @endphp
                                         <td>- {{ $precio}} %</td>
                                         <td>{{ $publicacion->cant_monedas }}</td>
@@ -121,8 +115,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Cantidad de monedas</label>
-                                <input type="number" class="form-control" id="cant_monedas" name="cant_monedas"
-                                    required>
+                                <input type="number" class="form-control" id="cant_monedas" name="cant_monedas" required>
                             </div>
                         </div>
                     </div>
@@ -170,8 +163,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form id="delPublicacionForm" class="form" method="POST" action="/publicacionDel"
-                enctype="multipart/form-data">
+            <form id="delPublicacionForm" class="form" method="POST" action="/publicacionDel" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <p>Realmente desea eliminar esta publicacion?.</p>

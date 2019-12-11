@@ -8,21 +8,15 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-primary">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h4 class="card-title ">Productos</h4>
-                            </div>
-
-                            <div class="col-md-6 text-right">
-                                <a href="{{ route('newProducto')}}">
-                                    <button type="button" rel="tooltip" class="btn btn-info" title="Agregar"
-                                        data-toggle="modal" data-target="#addUser">
-                                        <i class="material-icons">add_circle_outline</i>
-                                    </button>
-                                </a>
-                            </div>
+                        <h4 class="card-title ">Productos</h4>
+                        <div class="text-right">
+                            <a href="{{ route('newProducto')}}">
+                                <button type="button" rel="tooltip" class="btn btn-info" title="Agregar"
+                                    data-toggle="modal" data-target="#addUser">
+                                    <i class="material-icons">add_circle_outline</i>
+                                </button>
+                            </a>
                         </div>
-
                         <div class="flash-message">
                             @foreach (['danger', 'warning', 'success', 'info'] as $msg)
                             @if(Session::has('alert-' . $msg))
