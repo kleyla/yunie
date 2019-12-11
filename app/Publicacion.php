@@ -7,8 +7,11 @@ use App\CompartirPub;
 use App\Cliente;
 use App\Producto;
 use App\Tienda;
+<<<<<<< HEAD
+=======
 use App\Imagen;
 use App\MegustaPub;
+>>>>>>> 3d3cce9af13c72b331bb82555b14cc53df13cd44
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Database\Eloquent\Model;
