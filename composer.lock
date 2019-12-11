@@ -4,11 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "content-hash": "d9a3cc9823d8910d5820cdfa13f33990",
-=======
-    "content-hash": "b0effc22a9ebe06218281749168e46de",
->>>>>>> 0d3f9cd1c77184e659903670758d8fce62ba9e14
+    "content-hash": "47f5627027305ea270ddbf0d82124d3c",
     "packages": [
         {
             "name": "clarifai/clarifai-php",
@@ -440,29 +436,6 @@
             "time": "2019-09-03T16:45:42+00:00"
         },
         {
-<<<<<<< HEAD
-            "name": "google/protobuf",
-            "version": "v3.11.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/protocolbuffers/protobuf-php.git",
-                "reference": "418f1b96c2020918a11dcd3709b7b6d01dbf025a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/418f1b96c2020918a11dcd3709b7b6d01dbf025a",
-                "reference": "418f1b96c2020918a11dcd3709b7b6d01dbf025a",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": ">=4.8.0"
-            },
-            "suggest": {
-                "ext-bcmath": "Need to support JSON deserialization"
-=======
             "name": "fig/http-message-util",
             "version": "1.1.3",
             "source": {
@@ -706,55 +679,15 @@
             },
             "suggest": {
                 "phpseclib/phpseclib": "May be used in place of OpenSSL for signing strings or for token management. Please require version ^2."
->>>>>>> 0d3f9cd1c77184e659903670758d8fce62ba9e14
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-<<<<<<< HEAD
-                    "Google\\Protobuf\\": "src/Google/Protobuf",
-                    "GPBMetadata\\Google\\Protobuf\\": "src/GPBMetadata/Google/Protobuf"
-=======
                     "Google\\Auth\\": "src"
->>>>>>> 0d3f9cd1c77184e659903670758d8fce62ba9e14
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-<<<<<<< HEAD
-                "BSD-3-Clause"
-            ],
-            "description": "proto library for PHP",
-            "homepage": "https://developers.google.com/protocol-buffers/",
-            "keywords": [
-                "proto"
-            ],
-            "time": "2019-12-03T06:32:14+00:00"
-        },
-        {
-            "name": "grpc/grpc",
-            "version": "1.25.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/grpc/grpc-php.git",
-                "reference": "bdb165d6712db0cfcc35edae2d14fb2b00cabc88"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/grpc/grpc-php/zipball/bdb165d6712db0cfcc35edae2d14fb2b00cabc88",
-                "reference": "bdb165d6712db0cfcc35edae2d14fb2b00cabc88",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.0"
-            },
-            "require-dev": {
-                "google/auth": "^v1.3.0"
-            },
-            "suggest": {
-                "ext-protobuf": "For better performance, install the protobuf C extension.",
-                "google/protobuf": "To get started using grpc quickly, install the native protobuf library."
-=======
                 "Apache-2.0"
             ],
             "description": "Google Auth Library for PHP",
@@ -899,30 +832,17 @@
                 "friendsofphp/php-cs-fixer": "^1.13 || v2.14.2",
                 "paragonie/random_compat": ">=2",
                 "phpunit/phpunit": "^4"
->>>>>>> 0d3f9cd1c77184e659903670758d8fce62ba9e14
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-<<<<<<< HEAD
-                    "Grpc\\": "src/lib/"
-=======
                     "Google\\CRC32\\": "src"
->>>>>>> 0d3f9cd1c77184e659903670758d8fce62ba9e14
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "Apache-2.0"
             ],
-<<<<<<< HEAD
-            "description": "gRPC library for PHP",
-            "homepage": "https://grpc.io",
-            "keywords": [
-                "rpc"
-            ],
-            "time": "2019-11-07T00:47:40+00:00"
-=======
             "authors": [
                 {
                     "name": "Andrew Brampton",
@@ -932,6 +852,88 @@
             "description": "Various CRC32 implementations",
             "homepage": "https://github.com/google/php-crc32",
             "time": "2019-05-09T06:24:58+00:00"
+        },
+        {
+            "name": "google/protobuf",
+            "version": "v3.11.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/protocolbuffers/protobuf-php.git",
+                "reference": "418f1b96c2020918a11dcd3709b7b6d01dbf025a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/418f1b96c2020918a11dcd3709b7b6d01dbf025a",
+                "reference": "418f1b96c2020918a11dcd3709b7b6d01dbf025a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=4.8.0"
+            },
+            "suggest": {
+                "ext-bcmath": "Need to support JSON deserialization"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Google\\Protobuf\\": "src/Google/Protobuf",
+                    "GPBMetadata\\Google\\Protobuf\\": "src/GPBMetadata/Google/Protobuf"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "proto library for PHP",
+            "homepage": "https://developers.google.com/protocol-buffers/",
+            "keywords": [
+                "proto"
+            ],
+            "time": "2019-12-03T06:32:14+00:00"
+        },
+        {
+            "name": "grpc/grpc",
+            "version": "1.25.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/grpc/grpc-php.git",
+                "reference": "bdb165d6712db0cfcc35edae2d14fb2b00cabc88"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/grpc/grpc-php/zipball/bdb165d6712db0cfcc35edae2d14fb2b00cabc88",
+                "reference": "bdb165d6712db0cfcc35edae2d14fb2b00cabc88",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "google/auth": "^v1.3.0"
+            },
+            "suggest": {
+                "ext-protobuf": "For better performance, install the protobuf C extension.",
+                "google/protobuf": "To get started using grpc quickly, install the native protobuf library."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Grpc\\": "src/lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "gRPC library for PHP",
+            "homepage": "https://grpc.io",
+            "keywords": [
+                "rpc"
+            ],
+            "time": "2019-11-07T00:47:40+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -1120,7 +1122,6 @@
                 "url"
             ],
             "time": "2019-07-01T23:21:34+00:00"
->>>>>>> 0d3f9cd1c77184e659903670758d8fce62ba9e14
         },
         {
             "name": "jakub-onderka/php-console-color",

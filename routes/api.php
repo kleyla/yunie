@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('login','UserController@loginApi');
-Route::get('publicaciones', 'ProductoController@publicacionesApi');
+Route::get('publicaciones/{uid}', 'ProductoController@publicacionesApi');
 Route::get('usuarios', 'UserController@usuariosApi');
 Route::get('publicacion/{id}/comentarios', 'PublicacionController@publicacionApi');
 Route::post('register','UserController@registerApi');
@@ -28,7 +29,7 @@ Route::get('example','PublicacionController@example');
 Route::get('example2','PublicacionController@example2');
 
 //Ver Publicaciones
-Route::get('cliente/{id}/publicaciones', 'PublicacionController@publicacionListaClienteApi');
+Route::get('cliente/{uid}/publicaciones', 'PublicacionController@publicacionListaClienteApi');
 Route::get('vendedor/{id}/publicaciones', 'PublicacionController@publicacionListaVendedorApi');
 Route::get('tienda/{id}/publicaciones', 'PublicacionController@publicacionListaTiendaApi');
 
@@ -39,4 +40,27 @@ Route::get('/archivo/images/{fileName}', 'ProductoController@images');
 Route::get('/file/imageUser/{fileName}', 'UserController@imageUser');
 Route::get('/file/imageProducto/{fileName}', 'ProductoController@imageProducto');
 Route::get('/file/imageTienda/{fileName}', 'ProductoController@imageTienda');
+
+// ME GUSTA
+Route::get('sigoTienda/{idt}/{uid}', 'SeguirController@sigoTiendaApi');
+Route::post('seguirTienda/{idt}', 'SeguirController@seguirTiendaApi');
+
+Route::post('megustaAdd/{idp}', 'MegustaController@megustaAddApi');
+Route::get('megustas/{idp}', 'MegustaController@megustasApi');
+Route::get('compartir/{idp}', 'CompartirController@compartirApi');
+Route::post('compartirAdd/{idp}', 'CompartirController@compartirAddApi');
+
+
+//CARRITO
+Route::get('getCarrito/{uid}', 'CarritoController@getCarritoApi');
+Route::get('getCarritoTotal/{uid}', 'CarritoController@getCarritoTotalApi');
+Route::post('comprar', 'CarritoController@comprarApi');
+Route::post('carritoAdd/{idp}', 'CarritoController@carritoAddApi');
+Route::post('delCartProd', 'CarritoController@delCartProdApi');
+
+Route::get('getProductosTienda/{idt}', 'ProductoController@getProductosTiendaApi');
+
+// WISHLIST
+Route::get('getListaDeseo/{uid}', 'ListadeseoController@getListaDeseoApi');
+Route::post('delListadeseoProd', 'ListadeseoController@delListadeseoProdApi');
 

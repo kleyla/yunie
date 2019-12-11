@@ -5,8 +5,12 @@ namespace App\Http\Controllers;
 use App\Producto;
 use App\Imagen;
 use App\Tag;
+use App\Tienda;
+use App\Publicacion;
+use App\User;
+use App\Cliente;
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
 use PhpFanatic\clarifAI\ImageClient;
 
 
@@ -260,25 +264,48 @@ class ProductoController extends Controller
     }
 
     // APIS
-    public function publicacionesApi()
+    public function publicacionesApi($uid)
     {
-        $productos = DB::select("select productos.*, tiendas.id as idt, tiendas.nombre as tienda, tiendas.foto, publicacions.created_at,
-                publicacions.id as idp, publicacions.descripcion as descPub, publicacions.precio_oferta, publicacions.cant_monedas
+        $user = User::where('id_firebase', $uid)->first();
+        if ($user != null) {
+
+            $cliente = Cliente::where('id_user', $user->id)->first();
+
+            $productos = DB::select("select DISTINCT(publicacions.id) as id, productos.id as idpro, productos.nombre, productos.descripcion,
+            tiendas.id as idt, tiendas.nombre as tienda, tiendas.foto, publicacions.created_at,
+                publicacions.descripcion as descPub, publicacions.precio_oferta, publicacions.cant_monedas
             from productos, tiendas, publicacions
             where productos.id_tienda = tiendas.id and
                 publicacions.id_producto = productos.id and
                 productos.estado = true and
                 publicacions.estado = true
                 order by publicacions.created_at DESC");
-        // dd($productos);
-        foreach ($productos as $producto) {
-            $producto->imagenes = Producto::getImagenes($producto->id);
-            $producto->megustas = Producto::getMegustas($producto->idp);
-            $producto->compartidos = Producto::getCompartirs($producto->idp);
-            $producto->comentarios = Producto::getComentarios($producto->idp);
+            // dd($productos);
+            foreach ($productos as $producto) {
+                $producto->imagenes = Producto::getImagenes($producto->idpro);
+                $producto->megustas = Producto::getMegustas($producto->id);
+                $producto->compartidos = Producto::getCompartirs($producto->id);
+                $producto->comentarios = Producto::getComentarios($producto->id);
+                $producto->megusta = Publicacion::megusta($cliente->id, $producto->id);
+            }
+            // dd($productos);
+            return response()->json($productos, 200);
         }
-        // dd($productos);
-        return response()->json($productos, 200);
+    }
+
+    public function getProductosTiendaApi($idt)
+    {
+        $tienda = Tienda::find($idt);
+        if ($tienda != null) {
+            $productos = Producto::where('estado', true)
+                ->where('id_tienda', $tienda->id)->get();
+            foreach ($productos as $producto) {
+                $producto->idt = $tienda->id;
+                $producto->nombreTienda = $tienda->nombre;
+                $producto->fotoTienda = $tienda->foto;
+            }
+            return response()->json($productos, 200);
+        }
     }
 
     public function images($fileName)
