@@ -53,6 +53,7 @@ class Publicacion extends Model
         ->where('tiendas.id','=',$idv)->orderBy('publicacions.id','DESC')->get();
         foreach($tiendas as $tienda){
             $tienda->imagenes= Producto::getImagenes($tienda->id_producto);
+          
         }
         return $tiendas;
     }
