@@ -6,6 +6,9 @@ use App\Producto;
 use App\Imagen;
 use App\Tag;
 use App\Tienda;
+use App\Publicacion;
+use App\User;
+use App\Cliente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PhpFanatic\clarifAI\ImageClient;
@@ -261,9 +264,14 @@ class ProductoController extends Controller
     }
 
     // APIS
-    public function publicacionesApi()
+    public function publicacionesApi($uid)
     {
-        $productos = DB::select("select DISTINCT(publicacions.id) as id, productos.id as idpro, productos.nombre, productos.descripcion,
+        $user = User::where('id_firebase', $uid)->first();
+        if ($user != null) {
+
+            $cliente = Cliente::where('id_user', $user->id)->first();
+
+            $productos = DB::select("select DISTINCT(publicacions.id) as id, productos.id as idpro, productos.nombre, productos.descripcion,
             tiendas.id as idt, tiendas.nombre as tienda, tiendas.foto, publicacions.created_at,
                 publicacions.descripcion as descPub, publicacions.precio_oferta, publicacions.cant_monedas
             from productos, tiendas, publicacions
@@ -272,15 +280,17 @@ class ProductoController extends Controller
                 productos.estado = true and
                 publicacions.estado = true
                 order by publicacions.created_at DESC");
-        // dd($productos);
-        foreach ($productos as $producto) {
-            $producto->imagenes = Producto::getImagenes($producto->idpro);
-            $producto->megustas = Producto::getMegustas($producto->id);
-            $producto->compartidos = Producto::getCompartirs($producto->id);
-            $producto->comentarios = Producto::getComentarios($producto->id);
+            // dd($productos);
+            foreach ($productos as $producto) {
+                $producto->imagenes = Producto::getImagenes($producto->idpro);
+                $producto->megustas = Producto::getMegustas($producto->id);
+                $producto->compartidos = Producto::getCompartirs($producto->id);
+                $producto->comentarios = Producto::getComentarios($producto->id);
+                $producto->megusta = Publicacion::megusta($cliente->id, $producto->id);
+            }
+            // dd($productos);
+            return response()->json($productos, 200);
         }
-        // dd($productos);
-        return response()->json($productos, 200);
     }
 
     public function getProductosTiendaApi($idt)
@@ -289,7 +299,7 @@ class ProductoController extends Controller
         if ($tienda != null) {
             $productos = Producto::where('estado', true)
                 ->where('id_tienda', $tienda->id)->get();
-            foreach ($productos as $producto){
+            foreach ($productos as $producto) {
                 $producto->idt = $tienda->id;
                 $producto->nombreTienda = $tienda->nombre;
                 $producto->fotoTienda = $tienda->foto;

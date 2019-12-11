@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use App\Publicacion;
 use App\MegustaPub;
 use App\Cliente;
+use App\Moneda;
+use App\User;
 
 class MegustaController extends Controller
 {
@@ -124,14 +126,19 @@ class MegustaController extends Controller
     public function megustaAddApi(Request $request, $idp)
     {
         $publicacion = Publicacion::find($idp);
-        $cliente = Cliente::where('id_firebase', $request->id_firebase)->first();
-        if ($publicacion != null && $cliente != null) {
-            $datoMegusta = Megusta::where('estado', true)->first();
+        $user = User::where('id_firebase', $request->id_firebase)->first();
+        if ($publicacion != null && $user != null) {
+            $cliente = Cliente::where('id_user', $user->id)->first();
+            $datoMegusta = Megusta::where('estado', true)
+                ->orderBy('created_at', 'DESC')->first();
             $megustas = new MegustaPub();
             $megustas->id_publicacion = $publicacion->id;
-            $megustas->cliente = $cliente->id;
+            $megustas->id_cliente = $cliente->id;
             $megustas->id_megusta = $datoMegusta->id;
             $megustas->save();
+            $monedas_detalle = new Moneda();
+            $monedas_detalle->id_megusta = $megustas->id;
+            $monedas_detalle->save();
             $cliente->monedas = $cliente->monedas + $datoMegusta->cant_monedas;
             $cliente->save();
             return response()->json($megustas, 200);
@@ -143,6 +150,7 @@ class MegustaController extends Controller
         if ($publicacion != null) {
             $megustas = MegustaPub::where('id_publicacion', $publicacion->id)->get();
             // dd($megustas);
+            // $clientes = null;
             foreach ($megustas as $megusta) {
                 $megusta->cliente = Cliente::where('id', $megusta->id_cliente)->first();
             }

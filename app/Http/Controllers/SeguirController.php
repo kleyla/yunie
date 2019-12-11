@@ -7,6 +7,7 @@ use App\Tienda;
 use App\SeguirTienda;
 use App\User;
 use App\Cliente;
+use App\Moneda;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -123,6 +124,28 @@ class SeguirController extends Controller
             } else {
                 return \response()->json(true, 200);
             }
+        }
+    }
+    public function seguirTiendaApi(Request $request, $idt)
+    {
+        $tienda = Tienda::find($idt);
+        $user = User::where('id_firebase', $request->id_firebase)->first();
+        if ($tienda != null && $user != null) {
+            $cliente = Cliente::where('id_user', $user->id)->first();
+            $seguir = Seguir::where('estado', true)
+                ->orderBy('created_at', 'DESC')->first();
+            $seguirTienda = new SeguirTienda();
+            $seguirTienda->id_cliente = $cliente->id;
+            $seguirTienda->id_tienda = $tienda->id;
+            $seguirTienda->id_seguir = $seguir->id;
+            $seguirTienda->save();
+            //MONEDAS AL CLIENTE
+            $monedas_detalle = new Moneda();
+            $monedas_detalle->id_seguir = $seguirTienda->id;
+            $monedas_detalle->save();
+            $cliente->monedas = $cliente->monedas + $seguir->cant_monedas;
+            $cliente->save();
+            return \response()->json($seguirTienda, 200);
         }
     }
 }
