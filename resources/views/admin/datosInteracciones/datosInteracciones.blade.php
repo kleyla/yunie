@@ -8,7 +8,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header card-header-primary">
-                        <h4 class="card-title">Cliente</h4>
+                        <h4 class="card-title">Datos de las interacciones</h4>
                         <div class="flash-message">
                             @foreach (['danger', 'warning', 'success', 'info'] as $msg)
                             @if(Session::has('alert-' . $msg))
