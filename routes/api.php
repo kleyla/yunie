@@ -18,15 +18,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('login','UserController@loginApi');
+Route::post('login', 'UserController@loginApi');
 Route::get('publicaciones/{uid}', 'ProductoController@publicacionesApi');
 Route::get('usuarios', 'UserController@usuariosApi');
 Route::get('publicacion/{id}/comentarios', 'PublicacionController@publicacionApi');
-Route::post('register','UserController@registerApi');
-Route::post('publicacion/{idp}/comentario/add','PublicacionController@publicacionComentarioAddApi');
-Route::post('buscar','PublicacionController@buscarApi');
-Route::get('example','PublicacionController@example');
-Route::get('example2','PublicacionController@example2');
+Route::post('register', 'UserController@registerApi');
+Route::post('publicacion/{idp}/comentario/add', 'PublicacionController@publicacionComentarioAddApi');
+Route::post('buscar', 'PublicacionController@buscarApi');
+Route::get('example', 'PublicacionController@example');
+Route::get('example2', 'PublicacionController@example2');
 
 //Ver Publicaciones
 Route::get('cliente/{uid}/publicaciones', 'PublicacionController@publicacionListaClienteApi');
@@ -61,6 +61,10 @@ Route::post('delCartProd', 'CarritoController@delCartProdApi');
 Route::get('getProductosTienda/{idt}', 'ProductoController@getProductosTiendaApi');
 
 // WISHLIST
+Route::post('addListadeseo/{idp}', 'ListadeseoController@addListadeseoApi');
 Route::get('getListaDeseo/{uid}', 'ListadeseoController@getListaDeseoApi');
 Route::post('delListadeseoProd', 'ListadeseoController@delListadeseoProdApi');
 
+// COMPARTIR
+Route::get('getPublicacion/{idp}/', 'PublicacionController@getPublicacionApi');
+Route::post('addComentario/{idp}', 'PublicacionController@addComentarioApi');

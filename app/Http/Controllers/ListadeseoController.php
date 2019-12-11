@@ -88,6 +88,22 @@ class ListadeseoController extends Controller
         //
     }
     // API
+
+    public function addListadeseoApi(Request $request, $idpro)
+    {
+        $producto = Producto::find($idpro);
+        $user = User::where('id_firebase', $request->id_firebase)->first();
+        if ($producto != null && $user != null) {
+            $cliente = Cliente::where('id_user', $user->id)->first();
+            $listadeseo = Listadeseo::where('id_cliente', $cliente->id)->first();
+            $listaProducto = new Listaproducto();
+            $listaProducto->id_producto = $producto->id;
+            $listaProducto->id_listadeseo = $listadeseo->id;
+            $listaProducto->save();
+            return response()->json($listaProducto, 200);
+        }
+    }
+
     public function getListaDeseoApi($uid)
     {
         $user = User::where('id_firebase', $uid)->first();

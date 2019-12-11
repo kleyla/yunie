@@ -34,7 +34,7 @@ class Publicacion extends Model
     public static function getPublicacionbyUser($idc)
     {
         $compartidos = CompartirPub::where('id_cliente', $idc)
-            ->orderBy('id_publicacion', 'DESC')->get();
+            ->orderBy('created_at', 'DESC')->get();
         foreach ($compartidos as $compartido) {
             $publicacion = Publicacion::where('id', $compartido->id_publicacion)->first();
             $producto = Producto::find($publicacion->id_producto);

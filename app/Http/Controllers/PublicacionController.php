@@ -14,6 +14,8 @@ use App\User;
 use App\Vendedor;
 use App\Tienda;
 use App\Cliente;
+use App\Compartir;
+use App\Imagen;
 use App\Tag;
 use App\SeguirTienda;
 use App\Moneda;
@@ -327,5 +329,38 @@ class PublicacionController extends Controller
         }
         // dd($productos);
         return $productos;
+    }
+    public function getPublicacionApi($idp)
+    {
+        $publicacion = Publicacion::find($idp);
+        if ($publicacion != null) {
+            $producto = Producto::find($publicacion->id_producto);
+            $producto->imagenes = Imagen::where('id_producto', $producto->id)->get();
+            $producto->tienda = Tienda::find($producto->id_tienda);
+            $publicacion->producto = $producto;
+            return response()->json($publicacion, 200);
+        }
+    }
+    public function addComentarioApi(Request $request, $idpu)
+    {
+        $publicacion = Publicacion::find($idpu);
+        $user = User::where('id_firebase', $request->id_firebase)->first();
+        if ($publicacion != null && $user != null) {
+            $compartir = Compartir::where('estado', true)
+                ->orderBy('created_at', 'DESC')->first();
+            $cliente = Cliente::where('id_user', $user->id)->first();
+            $compartir_pubs = new CompartirPub();
+            $compartir_pubs->descripcion = $request->descripcion;
+            $compartir_pubs->id_cliente = $cliente->id;
+            $compartir_pubs->id_publicacion = $publicacion->id;
+            $compartir_pubs->id_compartir = $compartir->id;
+            $compartir_pubs->save();
+            $monedas_detalle = new Moneda();
+            $monedas_detalle->id_megusta = $compartir->id;
+            $monedas_detalle->save();
+            $cliente->monedas = $cliente->monedas + $compartir->cant_monedas;
+            $cliente->save();
+            return response()->json($compartir_pubs, 200);
+        }
     }
 }
