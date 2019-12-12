@@ -134,6 +134,7 @@
                             <p class=""> <strong>Nombres:</strong> {{ $cliente->nombres }}</p>
                             <p class=""> <strong>Apellidos:</strong> {{ $cliente->apellidos }}</p>
                             <p class=""> <strong>Fecha de nacimiento:</strong> {{ $cliente->fecha_nac }}</p>
+                            <p class=""> <strong>Monedas: </strong> {{ $cliente->monedas }}</p>
                             <p class=""> <strong>Genero: </strong> {{ $cliente->genero }}</p>
                             <p class=""> <strong>Telefono: </strong> {{ $cliente->telefono }}</p>
                             <p class=""> <strong>CI: </strong> {{ $cliente->ci }}</p>

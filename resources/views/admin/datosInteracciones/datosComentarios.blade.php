@@ -33,7 +33,6 @@
                                     <th>Disponible</th>
                                     <th>Cantidad de monedas</th>
                                     <th>Fecha</th>
-                                    <th class="text-right">Actions</th>
                                 </thead>
                                 <tbody>
                                     @foreach ($comentarios as $comentario)
@@ -47,24 +46,7 @@
                                         @endif
                                         <td>{{ $comentario->cant_monedas }}</td>
                                         <td class="text-primary">{{ $comentario->created_at }}</td>
-                                        <td class="td-actions text-right">
-                                            <a href="{{route('verProducto', $comentario->id )}}">
-                                                <button type="button" rel="tooltip" class="btn btn-info" title="Ver">
-                                                    <i class="material-icons">search</i>
-                                                </button>
-                                            </a>
-                                            <a href="{{route('editProducto', $comentario->id )}}">
-                                                <button type="button" rel="tooltip" class="btn btn-success"
-                                                    title="Editar">
-                                                    <i class="material-icons">edit</i>
-                                                </button>
-                                            </a>
 
-                                            <button type="button" rel="tooltip" class="btn btn-danger delProducto"
-                                                data-toggle="modal" data-target="#userDelModal" title="Eliminar">
-                                                <i class="material-icons">close</i>
-                                            </button>
-                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>

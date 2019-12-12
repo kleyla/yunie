@@ -83,6 +83,12 @@
                     <p>Publicaciones</p>
                 </a>
             </li>
+            <li class="nav-item @yield('pedidos')">
+                <a class="nav-link" href="{{ route('pedidos') }}">
+                    <i class="material-icons">timeline</i>
+                    <p>Pedidos</p>
+                </a>
+            </li>
             <li class="nav-item @yield('datosInteracciones')">
                 <a class="nav-link" href="{{ route('datosInteracciones') }}">
                     <i class="material-icons">thumb_up</i>

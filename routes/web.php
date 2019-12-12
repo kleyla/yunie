@@ -138,3 +138,6 @@ Route::post('/downProductos', 'ReporteController@downProductos')->name('downProd
 // AI
 Route::get('/imagenAi', 'ProductoController@imagenAi')->name('imagenAi');
 Route::post('/buscar', 'ProductoController@buscar')->name('buscar');
+
+Route::get('/pedidos', 'NotaController@index')->name('pedidos');
+Route::get('/verPedido/{idn}', 'NotaController@show')->name('verPedido');

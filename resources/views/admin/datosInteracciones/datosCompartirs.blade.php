@@ -33,7 +33,6 @@
                                     <th>Disponible</th>
                                     <th>Cantidad de monedas</th>
                                     <th>Fecha</th>
-                                    <th class="text-right">Actions</th>
                                 </thead>
                                 <tbody>
                                     @foreach ($compartirs as $compartir)
@@ -47,24 +46,6 @@
                                         @endif
                                         <td>{{ $compartir->cant_monedas }}</td>
                                         <td class="text-primary">{{ $compartir->created_at }}</td>
-                                        <td class="td-actions text-right">
-                                            <a href="{{route('verProducto', $compartir->id )}}">
-                                                <button type="button" rel="tooltip" class="btn btn-info" title="Ver">
-                                                    <i class="material-icons">search</i>
-                                                </button>
-                                            </a>
-                                            <a href="{{route('editProducto', $compartir->id )}}">
-                                                <button type="button" rel="tooltip" class="btn btn-success"
-                                                    title="Editar">
-                                                    <i class="material-icons">edit</i>
-                                                </button>
-                                            </a>
-
-                                            <button type="button" rel="tooltip" class="btn btn-danger delProducto"
-                                                data-toggle="modal" data-target="#userDelModal" title="Eliminar">
-                                                <i class="material-icons">close</i>
-                                            </button>
-                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -93,8 +74,8 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Cantidad de monedas</label>
-                        <input type="number" class="form-control" id="cant_monedas" name="cant_monedas" aria-describedby="emailHelp"
-                            placeholder="cantidad de monedas" required>
+                        <input type="number" class="form-control" id="cant_monedas" name="cant_monedas"
+                            aria-describedby="emailHelp" placeholder="cantidad de monedas" required>
                     </div>
                 </div>
                 <div class="modal-footer">
