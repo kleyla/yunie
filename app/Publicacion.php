@@ -29,14 +29,6 @@ class Publicacion extends Model
         return $comentarios;
     }
 
-<<<<<<< HEAD
-    public static function getPublicacionbyUser($idp){
-        $compartidos=CompartirPub::where('id_cliente',$idp)->orderBy('id_publicacion', 'DESC')->get();
-             foreach($compartidos as $compartido){
-                $publicacion = Publicacion::where('id',$compartido->id_publicacion)->first();
-                $compartido->idPublicacion = $publicacion->id;
-             }
-=======
     public static function getPublicacionbyUser($idc)
     {
         $compartidos = CompartirPub::where('id_cliente', $idc)
@@ -50,7 +42,6 @@ class Publicacion extends Model
             // $compartido->producto = $producto;
             $compartido->tienda = Tienda::find($producto->id_tienda);
         }
->>>>>>> 3a36eaea62b97c1efd9aea30d19078256907747b
         return $compartidos;
     }
 

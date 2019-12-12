@@ -82,8 +82,6 @@ class ListadeseoController extends Controller
     {
         //
     }
-<<<<<<< HEAD
-=======
     // API
 
     public function addListadeseoApi(Request $request, $idpro)
@@ -126,5 +124,4 @@ class ListadeseoController extends Controller
             return response()->json($listaProducto, 200);
         }
     }
->>>>>>> 3a36eaea62b97c1efd9aea30d19078256907747b
 }

@@ -17,13 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-<<<<<<< HEAD
-Route::post('login','UserController@loginApi');
-Route::get('publicaciones', 'ProductoController@publicacionesApi');
-=======
 Route::post('login', 'UserController@loginApi');
 Route::get('publicaciones/{uid}', 'ProductoController@publicacionesApi');
->>>>>>> 3a36eaea62b97c1efd9aea30d19078256907747b
 Route::get('usuarios', 'UserController@usuariosApi');
 Route::get('publicacion/{id}/comentarios', 'PublicacionController@publicacionApi');
 Route::post('register', 'UserController@registerApi');
