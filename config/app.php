@@ -178,7 +178,7 @@ return [
         /*
         Conexion con firebase
         */
-        Kreait\Laravel\Firebase\ServiceProvider::class,
+        
 
     ],
 
