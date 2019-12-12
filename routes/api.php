@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -27,7 +28,7 @@ Route::get('example', 'PublicacionController@example');
 Route::get('example2', 'PublicacionController@example2');
 
 //Ver Publicaciones
-Route::get('cliente/{uid}/publicaciones', 'PublicacionController@publicacionListaClienteApi');
+Route::get('cliente/{id}/publicaciones', 'PublicacionController@publicacionListaClienteApi');
 Route::get('vendedor/{id}/publicaciones', 'PublicacionController@publicacionListaVendedorApi');
 Route::get('tienda/{id}/publicaciones', 'PublicacionController@publicacionListaTiendaApi');
 

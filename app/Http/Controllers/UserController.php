@@ -9,9 +9,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\User;
 use App\Vendedor;
 use App\Cliente;
-use App\Carrito;
-use App\Listadeseo;
-use Illuminate\Support\Facades\DB;
+use DB;
 
 class UserController extends Controller
 {
@@ -135,17 +133,11 @@ class UserController extends Controller
             $usuario->password = bcrypt($request->password);
             $usuario->id_permiso = 3;
             $usuario->save();
-            $cliente = new Cliente();
-            $cliente->nombres = $request->nombres;
-            $cliente->apellidos = $request->apellidos;
-            $cliente->id_user =$usuario->id;
-            $cliente->save();
-            $carrito = new Carrito();
-            $carrito->id_cliente = $cliente->id;
-            $carrito->save();
-            $lista_deseo = new Listadeseo();
-            $lista_deseo->id_cliente = $cliente->id;
-            $lista_deseo->save();
+            $vendedor = new Cliente();
+            $vendedor->nombres = $request->nombres;
+            $vendedor->apellidos = $request->apellidos;
+            $vendedor->id_user =$usuario->id;
+            $vendedor->save();
             return response()->json($usuario, 200);
         }
     }

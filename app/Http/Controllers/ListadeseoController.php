@@ -3,11 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Listadeseo;
-use App\User;
-use App\Cliente;
-use App\Producto;
-use App\Listaproducto;
-use App\Publicacion;
 use Illuminate\Http\Request;
 
 class ListadeseoController extends Controller

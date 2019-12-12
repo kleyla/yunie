@@ -6,8 +6,8 @@ use App\Tienda;
 use App\User;
 use App\Vendedor;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
+use DB;
+use Auth;
 
 class VendedorController extends Controller
 {

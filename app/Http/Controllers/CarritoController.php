@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Carrito;
-use App\Carritoproducto;
-use App\Producto;
-use App\Publicacion;
-use App\Cliente;
 use App\User;
+use App\Producto;
+use App\Cliente;
+use App\Moneda;
+use App\Carritoproducto;
+use App\Publicacion;
 use App\Nota;
 use App\Detalle;
 use Illuminate\Http\Request;

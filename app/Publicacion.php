@@ -18,8 +18,8 @@ class Publicacion extends Model
     public static function getComentarios($idp)
     {
         $comentarios = ComentarPub::where('id_publicacion', $idp)->get();
-        foreach ($comentarios as $comentario) {
-            $cliente = Cliente::where('id', $comentario->id_cliente)->first();
+        foreach( $comentarios as $comentario){
+            $cliente= Cliente::where('id', $comentario->id_cliente)->first();
             $comentario->nombreCliente = $cliente->nombres;
             $comentario->idCliente = $cliente->id;
         }
@@ -47,39 +47,22 @@ class Publicacion extends Model
         return $compartidos;
     }
 
-
-    public static function getPublicacionbySeller($idv)
-    {
+    public static function getPublicacionbySeller($idv){
         $tiendas = DB::table('tiendas')
-            ->join('productos', 'productos.id_tienda', '=', 'tiendas.id')
-            ->join('publicacions', 'publicacions.id_producto', '=', 'productos.id')
-            ->where('tiendas.id_vendedor', '=', $idv)->orderBy('publicacions.id', 'DESC')->get();
+        ->join('productos','productos.id_tienda','=','tiendas.id')
+        ->join('publicacions','publicacions.id_producto','=','productos.id')
+        ->where('tiendas.id_vendedor','=',$idv)->orderBy('publicacions.id','DESC')->get();
         return $tiendas;
     }
 
-    public static function getPublicacionbyStore($idt)
-    {
-        $publicaciones = DB::table('tiendas')
-            ->join('productos', 'productos.id_tienda', '=', 'tiendas.id')
-            ->join('publicacions', 'publicacions.id_producto', '=', 'productos.id')
-            ->where('tiendas.id', '=', $idt)->orderBy('publicacions.id', 'DESC')->get();
-        foreach ($publicaciones as $tienda) {
-            $tienda->imagenes = Producto::getImagenes($tienda->id_producto);
-            $tienda->megustas = Producto::getMegustas($tienda->id_producto);
-            $tienda->compartidos = Producto::getCompartirs($tienda->id_producto);
-            $tienda->comentarios = Producto::getComentarios($tienda->id_producto);
+    public static function getPublicacionbyStore($idv){
+        $tiendas = DB::table('tiendas')
+        ->join('productos','productos.id_tienda','=','tiendas.id')
+        ->join('publicacions','publicacions.id_producto','=','productos.id')
+        ->where('tiendas.id','=',$idv)->orderBy('publicacions.id','DESC')->get();
+        foreach($tiendas as $tienda){
+            $tienda->imagenes= Producto::getImagenes($tienda->id_producto);
         }
-        return $publicaciones;
-    }
-    public static function megusta($idc, $idpu)
-    {
-        $megusta_pub = MegustaPub::where('id_cliente', $idc)
-            ->where('id_publicacion', $idpu)->where('estado', true)->first();
-        if ($megusta_pub != null) {
-            //true
-            return true;
-        } else {
-            return false;
-        }
+        return $tiendas;
     }
 }

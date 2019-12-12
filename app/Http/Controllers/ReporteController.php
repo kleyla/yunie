@@ -12,7 +12,7 @@ use App\Exports\ProductosExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Carbon\Carbon;
 
-// use DB;
+use DB;
 
 class ReporteController extends Controller
 {
