@@ -6,7 +6,7 @@ use App\User;
 use App\Tienda;
 use App\Vendedor;
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Auth;
 use App\Ubicacion;
 

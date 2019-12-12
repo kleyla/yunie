@@ -178,8 +178,6 @@ return [
         /*
         Conexion con firebase
         */
-        
-
     ],
 
     /*

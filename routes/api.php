@@ -65,5 +65,5 @@ Route::get('getListaDeseo/{uid}', 'ListadeseoController@getListaDeseoApi');
 Route::post('delListadeseoProd', 'ListadeseoController@delListadeseoProdApi');
 
 // COMPARTIR
-Route::get('getPublicacion/{idp}/', 'PublicacionController@getPublicacionApi');
+Route::get('getPublicacion/{idpu}/', 'PublicacionController@getPublicacionApi');
 Route::post('addComentario/{idp}', 'PublicacionController@addComentarioApi');

@@ -17,6 +17,8 @@ use App\Cliente;
 use App\Compartir;
 use App\Imagen;
 use App\Tag;
+use App\SeguirTienda;
+use App\Moneda;
 use Illuminate\Support\Facades\DB;
 
 class PublicacionController extends Controller
@@ -151,7 +153,7 @@ class PublicacionController extends Controller
         $publicacion = Publicacion::find($idp);
         // dd($publicacion);
         // foreach ($publicacion as $publi) {
-        
+
         $publicacion->comentarios = Publicacion::getComentarios($publicacion->id);
         $publicacion->imagenes = Producto::getImagenes($publicacion->id_producto);
 
@@ -160,32 +162,64 @@ class PublicacionController extends Controller
     }
 
     // No esta en uso esta api pero si sirve
-    public static function publicacionListaVendedorApi($idv){
-        $vendedor=Vendedor::find($idv);
-        $vendedor->publicaciones=Publicacion::getPublicacionbySeller($vendedor->id);
+    public static function publicacionListaVendedorApi($idv)
+    {
+        $vendedor = Vendedor::find($idv);
+        $vendedor->publicaciones = Publicacion::getPublicacionbySeller($vendedor->id);
         return response()->json($vendedor, 200);
     }
 
-
-    public static function publicacionListaTiendaApi($idv){
-        $tienda=Tienda::find($idv);
-        $tienda->publicaciones=Publicacion::getPublicacionbyStore($tienda->id);
+    public static function publicacionListaTiendaApi($idv)
+    {
+        $tienda = Tienda::find($idv);
+        $tienda->publicaciones = Publicacion::getPublicacionbyStore($tienda->id);
         return response()->json($tienda, 200);
     }
-    
-    public function publicacionListaClienteApi($idu){
 
-        $cliente = Cliente::find($idu);
-        $cliente->publicaciones = Publicacion::getPublicacionbyUser($cliente->id);
-        return response()->json($cliente, 200);
+    public function publicacionListaClienteApi($uid)
+    {
+
+        $user = User::where('id_firebase', $uid)->first();
+        if ($user != null) {
+            $cliente = Cliente::where('id_user', $user->id)->first();
+            $cliente->foto = $user->foto;
+            $cliente->compartidos = Publicacion::getPublicacionbyUser($cliente->id);
+            return response()->json($cliente, 200);
+        }
     }
 
-    public function example2(){
-        if (Auth::check()) {
-            
-        }else{
-
+    public function publicacionesClienteApi($uid)
+    {
+        $user = User::where('id_firebase', $uid)->first();
+        if ($user != null) {
+            $cliente = Cliente::where('id_user', $user->id)->first();
+            $cliente->foto = $user->foto;
+            $productos = DB::select("select DISTINCT(publicacions.id) as id, productos.id as idpro, productos.nombre, productos.descripcion,
+            compartir_pubs.descripcion as comentario,
+            tiendas.id as idt, tiendas.nombre as tienda, tiendas.foto, publicacions.created_at,
+                publicacions.descripcion as descPub, publicacions.precio_oferta, publicacions.cant_monedas
+            from productos, tiendas, publicacions, compartir_pubs
+            where productos.id_tienda = tiendas.id and
+                publicacions.id_producto = productos.id and
+                productos.estado = true and
+                publicacions.estado = true and
+                compartir_pubs.id_cliente = $cliente->id and
+                compartir_pubs.id_publicacion = publicacions.id
+                order by publicacions.created_at DESC");
+            // dd($productos);
+            foreach ($productos as $producto) {
+                $producto->imagenes = Producto::getImagenes($producto->idpro);
+                $producto->megustas = Producto::getMegustas($producto->id);
+                $producto->compartidos = Producto::getCompartirs($producto->id);
+                $producto->comentarios = Producto::getComentarios($producto->id);
+            }
+            // dd($productos);
+            return response()->json($productos, 200);
         }
+    }
+    public function example2()
+    {
+        if (Auth::check()) { } else { }
     }
 
     public function publicacionComentarioAddApi(Request $request, $idp)
@@ -205,6 +239,11 @@ class PublicacionController extends Controller
                     $comentario->id_cliente = $cliente->id;
                     $comentario->id_comentario = $datoComentario->id;
                     $comentario->save();
+                    $monedas_detalle = new Moneda();
+                    $monedas_detalle->id_comentario = $datoComentario->id;
+                    $monedas_detalle->save();
+                    $cliente->monedas = $cliente->monedas + $datoComentario->cant_monedas;
+                    $cliente->save();
                     return \response()->json($comentario, 200);
                 } else {
                     return \response()->json("Cliente");
@@ -231,19 +270,6 @@ class PublicacionController extends Controller
         }
         // return $tags;
         $productosTag = array();
-        // $productos = Producto::where('estado', true)->get();
-        // foreach ($productos as $producto) {
-        //     $tagsProducto = Tag::where('id_producto', $producto->id)->get();
-        //     foreach ($tagsProducto as $tagPro) {
-        //         foreach ($tags as $tag) {
-        //             if (strcmp($tagPro->nombre, $tag) == 0) {
-        //                 array_push($productosTag, $producto);
-        //                 // dd($productosTag);
-
-        //             }
-        //         }
-        //     }
-        // }
         $tagsPro = Tag::all();
         foreach ($tagsPro as $tagPro) {
             foreach ($tags as $tag) {
@@ -265,6 +291,9 @@ class PublicacionController extends Controller
             if ($prod != null) {
                 array_push($productos, $prod);
             }
+        }
+        foreach ($productos as $producto) {
+            $producto->imagenes = Producto::getImagenes($producto->id);
         }
         // dd($productos);
         $jsonObject = array('productos' => $productos);
@@ -298,9 +327,9 @@ class PublicacionController extends Controller
         // dd($productos);
         return $productos;
     }
-    public function getPublicacionApi($idp)
+    public function getPublicacionApi($idpu)
     {
-        $publicacion = Publicacion::find($idp);
+        $publicacion = Publicacion::find($idpu);
         if ($publicacion != null) {
             $producto = Producto::find($publicacion->id_producto);
             $producto->imagenes = Imagen::where('id_producto', $producto->id)->get();
@@ -329,7 +358,6 @@ class PublicacionController extends Controller
             $cliente->monedas = $cliente->monedas + $compartir->cant_monedas;
             $cliente->save();
             return response()->json($compartir_pubs, 200);
-
         }
     }
 }

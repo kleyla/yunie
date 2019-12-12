@@ -6,8 +6,9 @@ use App\Tienda;
 use App\User;
 use App\Vendedor;
 use Illuminate\Http\Request;
-use DB;
-use Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 
 class VendedorController extends Controller
 {
@@ -131,7 +132,7 @@ class VendedorController extends Controller
     {
         $vendedor = DB::table('vendedors')->where('id_user', Auth::user()->id)->first();
         $usuario = User::find(Auth::user()->id);
-        if ($vendedor != null ){
+        if ($vendedor != null) {
             $tiendas = DB::table('tiendas')->where('id_vendedor', $vendedor->id)->get();
             return \view('vendedor.miPerfilVendedor', compact('vendedor', 'usuario', 'tiendas'));
         }
@@ -141,23 +142,22 @@ class VendedorController extends Controller
     {
         $vendedor = DB::table('vendedors')->where('id_user', Auth::user()->id)->first();
         $usuario = User::find(Auth::user()->id);
-        if ($vendedor != null ){
-        $tiendas = DB::table('tiendas')->where('id_vendedor', $vendedor->id)->get();
-        return \view('vendedor.misTiendas', \compact('vendedor', 'usuario', 'tiendas'));
+        if ($vendedor != null) {
+            $tiendas = DB::table('tiendas')->where('id_vendedor', $vendedor->id)->get();
+            return \view('vendedor.misTiendas', \compact('vendedor', 'usuario', 'tiendas'));
         }
-
     }
     public function misProductos()
     {
         $vendedor = DB::table('vendedors')->where('id_user', Auth::user()->id)->first();
-        if ($vendedor != null ){
+        if ($vendedor != null) {
             $productos = DB::select("select productos.*
             from productos, tiendas
             where tiendas.id = productos.id_tienda and
                 tiendas.id_vendedor = $vendedor->id");
-        // dd($productos);
-        $categorias = DB::table('categorias')->where('estado', true)->get();
-        return \view('vendedor.misProductos', compact('productos', 'categorias'));
+            // dd($productos);
+            $categorias = DB::table('categorias')->where('estado', true)->get();
+            return \view('vendedor.misProductos', compact('productos', 'categorias'));
         }
         $categorias = [];
         $productos = [];

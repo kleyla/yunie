@@ -9,7 +9,9 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\User;
 use App\Vendedor;
 use App\Cliente;
-use DB;
+use App\Carrito;
+use App\Listadeseo;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -123,21 +125,27 @@ class UserController extends Controller
     }
     public function registerApi(Request $request)
     {
-        if ($request->nombres == null || $request->email == null || $request->password = null || $request->id_firebase==null) {
+        if ($request->nombres == null || $request->email == null || $request->password = null || $request->id_firebase == null) {
             return response()->json();
         } else {
             $usuario = new User();
             $usuario->id_firebase = $request->id_firebase;
-            $usuario->name = $request->nombres.' '.$request->apellidos;
+            $usuario->name = $request->nombres . ' ' . $request->apellidos;
             $usuario->email = $request->email;
             $usuario->password = bcrypt($request->password);
             $usuario->id_permiso = 3;
             $usuario->save();
-            $vendedor = new Cliente();
-            $vendedor->nombres = $request->nombres;
-            $vendedor->apellidos = $request->apellidos;
-            $vendedor->id_user =$usuario->id;
-            $vendedor->save();
+            $cliente = new Cliente();
+            $cliente->nombres = $request->nombres;
+            $cliente->apellidos = $request->apellidos;
+            $cliente->id_user = $usuario->id;
+            $cliente->save();
+            $carrito = new Carrito();
+            $carrito->id_cliente = $cliente->id;
+            $carrito->save();
+            $lista_deseo = new Listadeseo();
+            $lista_deseo->id_cliente = $cliente->id;
+            $lista_deseo->save();
             return response()->json($usuario, 200);
         }
     }

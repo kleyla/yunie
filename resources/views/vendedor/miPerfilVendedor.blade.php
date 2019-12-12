@@ -5,18 +5,42 @@
 <div class="content">
     <div class="container-fluid">
         <div class="row">
+            <div class="col-md-3">
+                <div class="card card-profile">
+                    <div class="card-avatar">
+                        <a href="#pablo">
+                            <img class="img" src="{{ asset("img/users/$usuario->foto") }}" />
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        @if ( $usuario->id_permiso == 1)
+                        <h6 class="card-category text-gray">Administrador</h6>
+                        @endif
+                        @if ( $usuario->id_permiso == 2)
+                        <h6 class="card-category text-gray">Vendedor</h6>
+                        @endif
+                        @if ( $usuario->id_permiso == 3)
+                        <h6 class="card-category text-gray">Cliente</h6>
+                        @endif
+                        <h4 class="card-title">{{ $usuario->name }}</h4>
+                        <p class="card-description">
+                            Email: {{ $usuario->email }}
+                        </p>
+                        <div class="text-left">
+                            <p class=""> <strong>Nombres:</strong> {{ $vendedor->nombres }}</p>
+                            <p class=""> <strong>Apellidos:</strong> {{ $vendedor->apellidos }}</p>
+                            <p class=""> <strong>Fecha de nac.:</strong> {{ $vendedor->fecha_nac }}</p>
+                            <p class=""> <strong>Telefono: </strong> {{ $vendedor->telefono }}</p>
+                            <p class=""> <strong>Direccion: </strong> {{ $vendedor->direccion }}</p>
+                        </div>
+                        <a href="{{route('editVendedor', $vendedor->id)}}">Editar perfil</a>
+                    </div>
+                </div>
+            </div>
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header card-header-primary">
-                        @if ($usuario->id_permiso == 1)
-                        <h4 class="card-title ">Administrador</h4>
-                        @endif
-                        @if ($usuario->id_permiso == 2)
-                        <h4 class="card-title ">Vendedor</h4>
-                        @endif
-                        @if ($usuario->id_permiso == 3)
-                        <h4 class="card-title ">Cliente</h4>
-                        @endif
+                        <h4 class="card-title ">Mis Tiendas</h4>
                         <div class="flash-message">
                             @foreach (['danger', 'warning', 'success', 'info'] as $msg)
                             @if(Session::has('alert-' . $msg))
@@ -49,38 +73,6 @@
                             @endforeach
                             @endif
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card card-profile">
-                    <div class="card-avatar">
-                        <a href="#pablo">
-                            <img class="img" src="{{ asset("img/users/$usuario->foto") }}" />
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        @if ( $usuario->id_permiso == 1)
-                        <h6 class="card-category text-gray">Administrador</h6>
-                        @endif
-                        @if ( $usuario->id_permiso == 2)
-                        <h6 class="card-category text-gray">Vendedor</h6>
-                        @endif
-                        @if ( $usuario->id_permiso == 3)
-                        <h6 class="card-category text-gray">Cliente</h6>
-                        @endif
-                        <h4 class="card-title">{{ $usuario->name }}</h4>
-                        <p class="card-description">
-                            Email: {{ $usuario->email }}
-                        </p>
-                        <div class="text-left">
-                            <p class=""> <strong>Nombres:</strong> {{ $vendedor->nombres }}</p>
-                            <p class=""> <strong>Apellidos:</strong> {{ $vendedor->apellidos }}</p>
-                            <p class=""> <strong>Fecha de nac.:</strong> {{ $vendedor->fecha_nac }}</p>
-                            <p class=""> <strong>Telefono: </strong> {{ $vendedor->telefono }}</p>
-                            <p class=""> <strong>Direccion: </strong> {{ $vendedor->direccion }}</p>
-                        </div>
-                        <a href="{{route('editVendedor', $vendedor->id)}}">Editar perfil</a>
                     </div>
                 </div>
             </div>
