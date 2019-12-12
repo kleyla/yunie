@@ -67,11 +67,11 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="categoria">Seleccione una Tienda</label>
-                                        <select class="form-control" data-style="btn btn-link" id="categoria"
-                                            name="categoria">
+                                        <label for="tienda">Seleccione una Tienda</label>
+                                        <select class="form-control" data-style="btn btn-link" id="tienda"
+                                            name="tienda">
                                             @foreach ($tiendas as $tienda)
-                                            <option name="categoria" value="{{ $tienda->id }}">{{ $tienda->nombre }}
+                                            <option name="tienda" value="{{ $tienda->id }}">{{ $tienda->nombre }}
                                             </option>
                                             @endforeach
                                         </select>

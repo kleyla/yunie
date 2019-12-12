@@ -361,6 +361,7 @@ class PublicacionController extends Controller
             $cliente->monedas = $cliente->monedas + $compartir->cant_monedas;
             $cliente->save();
             return response()->json($compartir_pubs, 200);
+
         }
     }
 }

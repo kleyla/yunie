@@ -121,13 +121,14 @@ class CarritoController extends Controller
             // dd($carritoProductos);
             $total = 0;
             $totalMonedas = 0;
-
+            $monedas = 0;
             foreach ($carritoProductos as $cartProducto) {
                 $cartProducto->producto = Producto::find($cartProducto->id_producto);
                 $cartProducto->publicacion = Publicacion::where('id_producto', $cartProducto->id_producto)
                     ->orderBy('created_at', 'DESC')->first();
                 $total = $total + ($cartProducto->producto->precio);
                 $totalMonedas = $totalMonedas + ($cartProducto->producto->precio * (1 - $cartProducto->publicacion->precio_oferta));
+                $monedas = $monedas + $cartProducto->publicacion->cant_monedas;
             }
             // dd($total);
             $total = round($total, 2);
@@ -135,6 +136,7 @@ class CarritoController extends Controller
 
             $carrito->total = $total;
             $carrito->totalMonedas = $totalMonedas;
+            $carrito->monedas = $monedas;
             return \response()->json($carrito, 200);
         }
     }
@@ -215,7 +217,6 @@ class CarritoController extends Controller
             $carritoProducto->estado = false;
             $carritoProducto->save();
             return \response()->json($carritoProducto, 200);
-
         }
     }
 }

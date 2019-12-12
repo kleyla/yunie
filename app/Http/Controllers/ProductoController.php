@@ -56,6 +56,7 @@ class ProductoController extends Controller
 
         $producto = new Producto();
         // dd($request->tags);
+        // dd($request->tienda);
         $producto->nombre = $request->nombre;
         $producto->descripcion = $request->descripcion;
         $producto->precio = $request->precio;

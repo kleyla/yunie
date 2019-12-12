@@ -1,12 +1,6 @@
 <?php
 
 use Illuminate\Http\Request;
-<<<<<<< HEAD
-use Illuminate\Support\Facades\Route;
-=======
-
-
->>>>>>> 3d3cce9af13c72b331bb82555b14cc53df13cd44
 /*
 |--------------------------------------------------------------------------
 | API Routes

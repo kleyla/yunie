@@ -27,7 +27,8 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Nombre</label>
-                                        <input type="text" class="form-control" name="nombre" id="nombre" value="" required>
+                                        <input type="text" class="form-control" name="nombre" id="nombre" value=""
+                                            required>
                                     </div>
                                 </div>
                                 <div class="col-md-8">
@@ -67,9 +68,10 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="categoria">Seleccione una categoria</label>
+                                        <label for="tienda">Seleccione una Tienda</label>
                                         <select class="form-control" data-style="btn btn-link" id="tienda"
                                             name="tienda">
+                                            <option name="" value="">Seleccione uno...</option>
                                             @foreach ($tiendas as $tienda)
                                             <option name="tienda" value="{{ $tienda->id }}">{{ $tienda->nombre }}
                                             </option>
