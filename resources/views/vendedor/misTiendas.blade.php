@@ -8,15 +8,7 @@
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header card-header-primary">
-                        @if ($usuario->id_permiso == 1)
-                        <h4 class="card-title ">Administrador</h4>
-                        @endif
-                        @if ($usuario->id_permiso == 2)
-                        <h4 class="card-title ">Vendedor</h4>
-                        @endif
-                        @if ($usuario->id_permiso == 3)
-                        <h4 class="card-title ">Cliente</h4>
-                        @endif
+                        <h4 class="card-title ">Mis Tiendas</h4>
                         <div class="flash-message">
                             @foreach (['danger', 'warning', 'success', 'info'] as $msg)
                             @if(Session::has('alert-' . $msg))
