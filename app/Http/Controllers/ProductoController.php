@@ -280,9 +280,11 @@ class ProductoController extends Controller
     public function publicacionesApi($uid)
     {
         $user = User::where('id_firebase', $uid)->first();
+        
         if ($user != null) {
             $cliente = Cliente::where('id_user', $user->id)->first();
-            $productos = DB::select("select DISTINCT(publicacions.id) as id, productos.id as idpro, productos.nombre, productos.descripcion,
+            
+            $productos = DB::select("SELECT DISTINCT(publicacions.id) as id, productos.id as idpro, productos.nombre, productos.descripcion,
             tiendas.id as idt, tiendas.nombre as tienda, tiendas.foto, publicacions.created_at,
                 publicacions.descripcion as descPub, publicacions.precio_oferta, publicacions.cant_monedas
                 from productos, tiendas, publicacions
@@ -292,13 +294,16 @@ class ProductoController extends Controller
                 publicacions.estado = true
                 order by publicacions.created_at DESC");
 
-            // dd($productos);
+      
             foreach ($productos as $producto) {
                 $producto->imagenes = Producto::getImagenes($producto->idpro);
                 $producto->megustas = Producto::getMegustas($producto->id);
                 $producto->compartidos = Producto::getCompartirs($producto->id);
                 $producto->comentarios = Producto::getComentarios($producto->id);
                 $producto->megusta = Publicacion::megusta($cliente->id, $producto->id);
+                $producto->encarrito=Producto::enCarrito($cliente->id,$producto->idpro);
+                $producto->enlista=Producto::enListaDeseos($cliente->id,$producto->idpro);
+                // return $producto->idpro;
             }
             // dd($productos);
             return response()->json($productos, 200);
