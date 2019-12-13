@@ -12,9 +12,12 @@ use App\Cliente;
 use App\Carrito;
 use App\Listadeseo;
 use Illuminate\Support\Facades\DB;
+use App\Traits\ActivityTraits;
 
 class UserController extends Controller
 {
+    use ActivityTraits; 
+
     public function index()
     {
         $usuarios = DB::table('users')->where('estado', true)->get();
@@ -56,6 +59,10 @@ class UserController extends Controller
         $user->id_permiso = $request->permiso;
         $user->save();
         $request->session()->flash('alert-success', 'Usuario guardado con exito!');
+        $settingParms = $user->toArray();
+        $model = 'un usuario';
+        $this->logCreatedActivity($user, $request, $settingParms, $model);
+
         return \redirect()->route('usuarios');
     }
 

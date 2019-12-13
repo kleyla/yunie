@@ -36,6 +36,10 @@
                             <p class="card-text"> <strong>Stock:</strong> {{ $producto->stock }}</p>
                         </div>
                         <a href="{{route('editProducto', $producto->id)}}">Editar producto</a>
+                        <h4>
+                            <a href="{{route('publicacionNew', $producto->id)}}">Publicitar producto</a>
+                        </h4>
+
                     </div>
                 </div>
             </div>
@@ -105,7 +109,7 @@
                         </div>
                         @endforeach
                         @else
-                        
+
                         @endif
                     </div>
                 </div>
@@ -121,7 +125,7 @@
           $().ready(function() {
     // -------- CALIFICADO
         var calificacion = @json($promedio);
-            
+
             console.log(calificacion);
 
             calif = parseFloat(calificacion);

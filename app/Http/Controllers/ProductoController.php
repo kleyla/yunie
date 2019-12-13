@@ -17,10 +17,12 @@ use App\Tienda;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PhpFanatic\clarifAI\ImageClient;
-
+use App\Traits\ActivityTraits;
 
 class ProductoController extends Controller
 {
+    use ActivityTraits;
+
     /**
      * Display a listing of the resource.
      *
@@ -119,8 +121,13 @@ class ProductoController extends Controller
             $newTag->id_producto = $producto->id;
             $newTag->save();
         }
+        $settingParms = $producto->toArray();
+        $model = 'un producto';
+        $this->logCreatedActivity($producto, $request, $settingParms, $model);
         $request->session()->flash('alert-success', 'Producto guardado con exito!');
-        return \redirect()->route('productos');
+        // return \redirect()->route('productos');
+        return \redirect()->route('verProducto',$producto->id);
+
     }
 
     /**

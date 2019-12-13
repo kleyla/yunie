@@ -84,6 +84,12 @@
                     <p>Reportes</p>
                 </a>
             </li>
+            <li class="nav-item @yield('bitacora')">
+                <a class="nav-link" href="{{ route('bitacora') }}">
+                    <i class="material-icons">timeline</i>
+                    <p>Bitacora</p>
+                </a>
+            </li>
             @endif
             @if ( Auth::user()->id_permiso == 2)
             <li class="nav-item @yield('miPerfilVendedor')">

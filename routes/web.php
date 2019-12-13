@@ -83,6 +83,7 @@ Route::post('/productoDel/{idp}', 'ProductoController@destroy');
 
 // PUBLICACIONES
 Route::get('/publicaciones', 'PublicacionController@index')->name('publicaciones');
+Route::get('/publicacionNew/{idp}', 'PublicacionController@create')->name('publicacionNew');
 Route::get('/verPublicacion/{idp}', 'PublicacionController@show')->name('verPublicacion');
 Route::get('/editPublicacion/{idp}', 'PublicacionController@edit')->name('editPublicacion');
 Route::post('/publicacionUpdate/{idp}', 'PublicacionController@update')->name('publicacionUpdate');
@@ -141,3 +142,5 @@ Route::post('/buscar', 'ProductoController@buscar')->name('buscar');
 
 Route::get('/pedidos', 'NotaController@index')->name('pedidos');
 Route::get('/verPedido/{idn}', 'NotaController@show')->name('verPedido');
+//
+Route::get('/bitacora', 'ActivityController@bitacora')->name('bitacora');

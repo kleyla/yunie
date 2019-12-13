@@ -20,9 +20,12 @@ use App\Tag;
 use App\SeguirTienda;
 use App\Moneda;
 use Illuminate\Support\Facades\DB;
+use App\Traits\ActivityTraits;
 
 class PublicacionController extends Controller
 {
+    use ActivityTraits;
+
     /**
      * Display a listing of the resource.
      *
@@ -44,9 +47,12 @@ class PublicacionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($idpr)
     {
-        //
+        $producto = Producto::find($idpr);
+        if( $producto != null){
+            return view('admin.publicaciones.newPublicacion', compact('producto'));
+        }
     }
 
     /**
@@ -65,6 +71,9 @@ class PublicacionController extends Controller
         $publicacion->fecha_fin = $request->fecha_fin;
         $publicacion->id_producto = $request->producto;
         $publicacion->save();
+        $settingParms = $publicacion->toArray();
+        $model = 'una publicacion';
+        $this->logCreatedActivity($publicacion, $request, $settingParms, $model);
         $request->session()->flash('alert-success', 'Publicacion guardada con exito!');
         return \redirect()->route('publicaciones');
     }

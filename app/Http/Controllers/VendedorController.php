@@ -8,10 +8,12 @@ use App\Vendedor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-
+use App\Traits\ActivityTraits;
 
 class VendedorController extends Controller
 {
+    use ActivityTraits;
+
     /**
      * Display a listing of the resource.
      *
@@ -51,6 +53,10 @@ class VendedorController extends Controller
         $vendedor->telefono = $request->telefono;
         $vendedor->id_user = $request->usuario;
         $vendedor->save();
+        $settingParms = $vendedor->toArray();
+        $model = 'un vendedor';
+        $this->logCreatedActivity($vendedor, $request, $settingParms, $model);
+
         $request->session()->flash('alert-success', 'Vendedor guardado con exito!');
         return \redirect()->route('vendedores');
     }

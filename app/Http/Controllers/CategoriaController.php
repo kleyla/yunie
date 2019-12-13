@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Categoria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Traits\ActivityTraits;
 
 class CategoriaController extends Controller
 {
+    use ActivityTraits;
+
     /**
      * Display a listing of the resource.
      *
@@ -48,8 +51,10 @@ class CategoriaController extends Controller
             $categoria->foto = $fileName;
         }
         $categoria->save();
+        $settingParms = $categoria->toArray();
+        $model = 'una categoria';
+        $this->logCreatedActivity($categoria, $request, $settingParms, $model);
         $request->session()->flash('alert-success', 'Categoria guardada con exito!');
-
         return \redirect()->route('categorias');
     }
 

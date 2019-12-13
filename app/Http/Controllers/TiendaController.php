@@ -9,9 +9,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Auth;
 use App\Ubicacion;
+use App\Traits\ActivityTraits;
 
 class TiendaController extends Controller
 {
+    use ActivityTraits;
+
     /**
      * Display a listing of the resource.
      *
@@ -76,6 +79,9 @@ class TiendaController extends Controller
         $tienda->id_vendedor = $request->vendedor;
         $tienda->id_ubicacion = $ubicacion->id;
         $tienda->save();
+        $settingParms = $tienda->toArray();
+        $model = 'una tienda';
+        $this->logCreatedActivity($tienda, $request, $settingParms, $model);
         $request->session()->flash('alert-success', 'Tienda guardada con exito!');
         return \redirect()->route('tiendas');
     }
